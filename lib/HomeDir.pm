@@ -41,7 +41,7 @@ sub add_auto_flags
     my ( $caller, $flags ) = @_;
     my $uname = `uname`;
     chomp $uname;
-    $flags->{$uname} = 1;
+    $flags->{lc $uname} = 1;
 }
 
 
