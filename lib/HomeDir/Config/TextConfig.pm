@@ -5,14 +5,12 @@ use base 'HomeDir::Config';
 
 sub new
 {
-    my ( $class, @path ) = @_;
+    my ( $class, $path ) = @_;
     my $self = {};
     bless $self, ref $class || $class;
    
-    my $full_path = $self->expand_config_path( @path );
-
-    if( -e $full_path ) {
-        open my $fh, "<", $full_path or die "Can't read $full_path : $!\n";
+    if( -e $path ) {
+        open my $fh, "<", $path or die "Can't read $path : $!\n";
         my @lines = <$fh>;
         close $fh;
         chomp for @lines;
@@ -20,14 +18,14 @@ sub new
     } else {
         $self->{lines} = [];
     }
-    $self->{full_path} = $full_path;
+    $self->{path} = $path;
     return $self;
 }
 
-sub full_path
+sub path
 {
     my ( $self ) = @_;
-    return $self->{full_path};
+    return $self->{path};
 }
 
 
@@ -40,7 +38,7 @@ sub lines
 sub write
 {
     my ($self) = @_;
-    open my $fh, ">", $self->{full_path} or die "Can't write into $self->{full_path} : $!\n";
+    open my $fh, ">", $self->{path} or die "Can't write into $self->{path} : $!\n";
     print $fh $_, $self->eol()
         for @{$self->lines()};
     close $fh;

@@ -15,18 +15,14 @@ sub includes
     }
 }
 
-
-sub include_path_prefix{ qw/configs/ }
-sub include_path
-{ 
-    my ( $self, @path ) = @_;
-    $self->expand_homedir_path( $self->include_path_prefix(), @path );
+sub types {
+    my ( $self ) = @_;
+    [ keys %{$self->includes()} ];
 }
-
 
 sub create
 {
-    my ($caller, $type, $params) = @_;
+    my ($caller, $type, $params ) = @_;
     my $class = $caller->includes()->{$type} or die "Unknown include type $type";
     return $class->new( $params );
 }

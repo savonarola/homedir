@@ -16,8 +16,7 @@ sub new
     my ( $caller, $params ) = @_;
    
     my $self = {
-        snippet => $params->{snippet},
-        target_config => $params->{target_config},
+        snippet => $params->{file},
     };
 
     bless $self, ref $caller || $caller;
@@ -26,7 +25,7 @@ sub new
 sub snippet_lines 
 {
     my ( $self ) = @_;
-    my $fname = $self->include_path( @{$self->{snippet}} );
+    my $fname = $self->{snippet};
     open my $fh, "<", $fname
         or die "Can't open snippet $fname : $!\n";
     my @lines = <$fh>;
@@ -40,14 +39,7 @@ sub snippet_lines
 sub snippet_mark
 {
     my ( $self, $label ) = @_;
-    # join with '/' because this is not a real file path, just a mark
-    sprintf $self->snippet_mark_pattern(), $self->comment(), $self->snippet_name(), $label;
-}
-
-sub snippet_name
-{
-    my ( $self ) = @_;
-    join( '/', @{$self->{snippet}} );
+    sprintf $self->snippet_mark_pattern(), $self->comment(), $self->{snippet}, $label;
 }
 
 sub snippet_start_mark
@@ -86,12 +78,9 @@ sub search_positions
     return $pos_start, $pos_end;
 }
 
-
-
 sub install
 {
-    my ($self) = @_;
-    my $config = HomeDir::Config::TextConfig->new( @{$self->{target_config}} );
+    my ($self, $config) = @_;
     my $config_lines = $config->lines();
     my ($pos_start, $pos_end) = $self->search_positions( $config );
     if( !defined $pos_start ) {
@@ -99,9 +88,8 @@ sub install
     } elsif( defined $pos_start &&  defined $pos_end ) {
         splice @$config_lines, $pos_start, ($pos_end - $pos_start + 1), @{$self->snippet_lines()}
     } else {
-        warn "Snippet ".$self->snippet_name()." is corrupted in ".$config->full_path().", won't install it\n";
+        warn "Snippet $self->{snippet} is corrupted in ".$config->full_path().", won't install it\n";
     }
-    $config->write();
 }
 1;
 

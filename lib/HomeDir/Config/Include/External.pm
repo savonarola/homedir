@@ -1,7 +1,6 @@
 package HomeDir::Config::Include::External;
 use strict;
 use base 'HomeDir::Config::Include';
-use HomeDir::Config::TextConfig;
 
 use Data::Dumper;
 
@@ -15,8 +14,7 @@ sub new
     my ( $caller, $params ) = @_;
    
     my $self = {
-        external => $params->{external},
-        target_config => $params->{target_config},
+        external => $params->{file},
     };
 
     bless $self, ref $caller || $caller;
@@ -25,14 +23,13 @@ sub new
 sub include_external_cmd 
 {
     my ( $self ) = @_;
-    sprintf $self->include_external_cmd_pattern(), $self->include_path( @{$self->{external}} );
+    sprintf $self->include_external_cmd_pattern(), $self->{external};
 }
 
 sub external_mark
 {
     my ( $self ) = @_;
-    # join with '/' because this is not a real file path, just a mark
-    sprintf $self->external_mark_pattern(), $self->comment(), join( '/', @{$self->{external}} );
+    sprintf $self->external_mark_pattern(), $self->comment(), $self->{external};
 }
 
 sub include_external
@@ -61,8 +58,7 @@ sub search_position
 
 sub install
 {
-    my ($self) = @_;
-    my $config = HomeDir::Config::TextConfig->new( @{$self->{target_config}} );
+    my ($self, $config ) = @_;
     my $pos = $self->search_position( $config );
     my $config_lines = $config->lines();
     if( defined $pos ) {
@@ -70,7 +66,6 @@ sub install
     } else {
         push @$config_lines, $self->include_external();
     }
-    $config->write();
 }
 
 1;
