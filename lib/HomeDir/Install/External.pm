@@ -1,6 +1,6 @@
-package HomeDir::Config::Include::External;
+package HomeDir::Install::External;
 use strict;
-use base 'HomeDir::Config::Include';
+use base 'HomeDir::Install';
 
 use Data::Dumper;
 
@@ -23,7 +23,7 @@ sub new
 sub include_external_cmd 
 {
     my ( $self ) = @_;
-    sprintf $self->include_external_cmd_pattern(), $self->{external};
+    sprintf $self->include_external_cmd_pattern(), $self->expand_homedir_path( $self->{external} );
 }
 
 sub external_mark

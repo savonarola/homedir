@@ -1,7 +1,7 @@
-package HomeDir::Config::Include::Snippet;
+package HomeDir::Install::Snippet;
 use strict;
 
-use base 'HomeDir::Config::Include';
+use base 'HomeDir::Install';
 use HomeDir::Config::TextConfig;
 
 use Data::Dumper;
@@ -25,7 +25,7 @@ sub new
 sub snippet_lines 
 {
     my ( $self ) = @_;
-    my $fname = $self->{snippet};
+    my $fname = $self->expand_homedir_path( $self->{snippet} );
     open my $fh, "<", $fname
         or die "Can't open snippet $fname : $!\n";
     my @lines = <$fh>;

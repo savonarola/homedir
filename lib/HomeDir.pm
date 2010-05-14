@@ -5,7 +5,7 @@ use Data::Dumper;
 
 our @EXPORT = qw/run_cmd/; 
 
-use HomeDir::Config::Include;
+use HomeDir::Install;
 
 
 sub fs_separator{ "/" }
@@ -61,7 +61,7 @@ sub install_config
     my ( $self, $config_rec, $flags ) = @_;
     my $config_fname = $self->expand_config_path( $config_rec->{config} );
     my $config = HomeDir::Config::TextConfig->new( $config_fname );
-    my $include_types = HomeDir::Config::Include->types();
+    my $include_types = HomeDir::Install->types();
     my @includes = ();
     foreach my $type ( @$include_types ) {
         my $recs = $config_rec->{$type} || [];
@@ -76,7 +76,7 @@ sub install_config
         } @$recs;
         my @uniq_files = keys %{{ map{ $_ => 1 } @files }};
         foreach my $file ( @uniq_files ) {
-            my $include = HomeDir::Config::Include->create( $type, { file => $file } );
+            my $include = HomeDir::Install->create( $type, { file => $file } );
             push @includes, $include;
         }
     }
