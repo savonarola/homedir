@@ -54,6 +54,8 @@ sub install
     foreach my $config_rec ( @$configs ) {
         $caller->install_config( $config_rec, $flags );
     }
+    my $files = $cfg->{files} || {};
+    $caller->install_files($files);
 }
 
 sub install_config
@@ -61,7 +63,7 @@ sub install_config
     my ( $self, $config_rec, $flags ) = @_;
     my $config_fname = $self->expand_config_path( $config_rec->{config} );
     my $config = HomeDir::Config::TextConfig->new( $config_fname );
-    my $include_types = HomeDir::Install->types();
+    my $include_types = [ qw/external snippet/ ]; 
     my @includes = ();
     foreach my $type ( @$include_types ) {
         my $recs = $config_rec->{$type} || [];
@@ -83,6 +85,19 @@ sub install_config
     $_->install( $config ) for @includes;
     $config->write();
 }
+
+sub install_files 
+{
+    my ($caller, $files) = @_;
+    foreach my $where (keys %$files) {
+        my $install_files = $caller->get_files( $files->{where} );
+        foreach my $install_file ( @$install_files ) {
+            my $install = HomeDir::Install->create( file => { file => $install_file } );
+            $install->install();
+        }
+    }
+}
+
 
 sub get_files
 {

@@ -16,7 +16,7 @@ if( $Bin ne $homedir ) {
         'cp', '-rf', $Bin, $homedir;
 }
 
-my $cfg_file = HomeDir->expand_homedir_path('configs/list.cfg');
+my $cfg_file = HomeDir->expand_homedir_path('config.pm');
 my $cfg = do $cfg_file;
 if( $@ ) {
     die "Error reading $cfg_file : $@\n";
