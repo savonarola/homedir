@@ -68,11 +68,6 @@ sub install_config
     foreach my $type ( @$include_types ) {
         my $recs = $config_rec->{$type} || [];
         $recs = [ $recs ] unless ref $recs eq 'ARRAY';
-        $recs = [ map { 
-            ref eq 'HASH' 
-                ? $_
-                : { files => $_.'' }
-        } @$recs ];
         my @files = map {
             @{ $self->get_files( $_, $flags ) }
         } @$recs;
@@ -90,10 +85,10 @@ sub install_files
 {
     my ($caller, $files) = @_;
     foreach my $where (keys %$files) {
-        my $install_files = $caller->get_files( $files->{where} );
+        my $install_files = $caller->get_files( $files->{$where} );
         foreach my $install_file ( @$install_files ) {
-            my $install = HomeDir::Install->create( file => { file => $install_file } );
-            $install->install();
+            my $install = HomeDir::Install->create( file => { file => $caller->expand_homedir_path($install_file) } );
+            $install->install( $where );
         }
     }
 }
@@ -102,6 +97,9 @@ sub install_files
 sub get_files
 {
     my ( $self, $rec, $flags ) = @_;
+    $rec = ref eq 'HASH' 
+        ? $rec
+        : { files => $rec.'' };
     my $rec_flags = $rec->{flags} || [];
     $rec_flags = [split /\s+/, $rec_flags] unless ref $rec_flags eq 'ARRAY';
     my $need_install = $rec_flags && @$rec_flags 
@@ -110,7 +108,7 @@ sub get_files
     return [] unless $need_install;
     my $files = $rec->{files} || [];
     $files = [$files] unless ref $files eq 'ARRAY';
-    my $res = [ map { glob $_ } map { $self->config_prefix().$_ } @$files ];
+    my $res = [ map { glob $_ } @$files ];
     return $res;
 }
 

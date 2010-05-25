@@ -3,20 +3,21 @@
         {
             config => '.zshrc',
             external => [ 
-                'zshrc/externals/*.sh', 
+                'configs/zshrc/externals/*.sh', 
                 { 
-                    files => 'zshrc/externals/*.sh', 
+                    files => 'configs/zshrc/externals/*.sh', 
                     flags => 'Linux'
                 }
             ],
             snippet => [ 
-                'zshrc/snippets/*.sh',
+                'configs/zshrc/snippets/*.sh',
             ]
         },
     ],
 
     files => {
 
+        '~/' => 'files/.about'
 
 
     }
