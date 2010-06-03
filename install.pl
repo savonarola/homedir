@@ -4,9 +4,9 @@ use FindBin qw/$Bin/;
 use lib "$Bin/lib";
 use HomeDir;
 
-my $flags = map { $_ => 1 } @ARGV;
+my $flags = { map { $_ => 1 } @ARGV };
 
-my $homedir = HomeDir->expand_homedir_path();
+my $homedir = HomeDir->expand_homedir_path('');
 
 if( $Bin ne $homedir ) {
     run_cmd "Removing old homedir folder", 

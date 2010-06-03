@@ -2,6 +2,7 @@ package HomeDir;
 use strict;
 use base 'Exporter';
 use Data::Dumper;
+use Carp qw/cluck/;
 
 our @EXPORT = qw/run_cmd/; 
 
@@ -18,6 +19,7 @@ sub config_prefix{ "configs/" }
 sub expand_homedir_path
 {
     my ( $self, $path ) = @_;
+    cluck unless defined $path;
     join $self->fs_separator(), $self->home(), $self->homedir(), $path;
 }
 
@@ -44,6 +46,12 @@ sub add_auto_flags
     $flags->{lc $uname} = 1;
 }
 
+sub system
+{
+    my ( $self, @args ) = @_;
+    print "=> ".join( " ", @args )."\n";
+    system @args;
+}
 
 sub install
 {
@@ -63,7 +71,7 @@ sub install_config
     my ( $self, $config_rec, $flags ) = @_;
     my $config_fname = $self->expand_config_path( $config_rec->{config} );
     my $config = HomeDir::Config::TextConfig->new( $config_fname );
-    my $include_types = [ qw/external snippet/ ]; 
+    my $include_types = HomeDir::Install->types(); 
     my @includes = ();
     foreach my $type ( @$include_types ) {
         my $recs = $config_rec->{$type} || [];
@@ -71,12 +79,13 @@ sub install_config
         my @files = map {
             @{ $self->get_files( $_, $flags ) }
         } @$recs;
-        my @uniq_files = keys %{{ map{ $_ => 1 } @files }};
+        my @uniq_files = sort keys %{{ map{ $_ => 1 } @files }};
         foreach my $file ( @uniq_files ) {
             my $include = HomeDir::Install->create( $type, { file => $file } );
             push @includes, $include;
         }
     }
+    #die Dumper( \@includes );
     $_->install( $config ) for @includes;
     $config->write();
 }
@@ -87,7 +96,7 @@ sub install_files
     foreach my $where (keys %$files) {
         my $install_files = $caller->get_files( $files->{$where} );
         foreach my $install_file ( @$install_files ) {
-            my $install = HomeDir::Install->create( file => { file => $caller->expand_homedir_path($install_file) } );
+            my $install = HomeDir::Install->create_file( { file => $caller->expand_homedir_path($install_file) } );
             $install->install( $where );
         }
     }

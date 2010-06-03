@@ -1,25 +1,18 @@
 {
     configs => [
         {
-            config => '.zshrc',
-            external => [ 
-                'configs/zshrc/externals/*.sh', 
-                { 
-                    files => 'configs/zshrc/externals/*.sh', 
-                    flags => 'Linux'
-                }
+            config => '.vimrc',
+            vim_external => [ 
+                'configs/vimrc/??_*.vim', 
+                { files => 'configs/vimrc/local_??_*.vim', flags => 'local' },
+                { files => 'configs/vimrc/utf_??_*.vim', flags => 'linux utf' },
+
             ],
-            snippet => [ 
-                'configs/zshrc/snippets/*.sh',
-            ]
         },
     ],
 
     files => {
-
-        '~/' => 'files/.about'
-
-
+        '~/.vim/' => 'files/vim/*',
     }
 }
 

@@ -3,6 +3,7 @@ use strict;
 use base 'HomeDir';
 
 use HomeDir::Install::External;
+use HomeDir::Install::VimExternal;
 use HomeDir::Install::Snippet;
 use HomeDir::Install::File;
 
@@ -11,7 +12,7 @@ sub install_modules
     {
         external => 'HomeDir::Install::External',
         snippet => 'HomeDir::Install::Snippet',
-        file => 'HomeDir::Install::File',
+        vim_external => 'HomeDir::Install::VimExternal',
     }
 }
 
@@ -25,6 +26,13 @@ sub create
     my ($caller, $type, $params ) = @_;
     my $class = $caller->install_modules()->{$type} or die "Unknown include type $type";
     return $class->new( $params );
+}
+
+sub create_file
+{
+    my ($caller, $params ) = @_;
+    return HomeDir::Install::File->new( $params );
+
 }
 
 
