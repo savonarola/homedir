@@ -106,9 +106,9 @@ sub install_files
 sub get_files
 {
     my ( $self, $rec, $flags ) = @_;
-    $rec = ref eq 'HASH' 
+    $rec = ref $rec eq 'HASH' 
         ? $rec
-        : { files => $rec.'' };
+        : { files => $rec };
     my $rec_flags = $rec->{flags} || [];
     $rec_flags = [split /\s+/, $rec_flags] unless ref $rec_flags eq 'ARRAY';
     my $need_install = $rec_flags && @$rec_flags 
