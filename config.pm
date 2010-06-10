@@ -23,7 +23,11 @@
 
     files => {
         '~/.vim/' => 'files/vim/*',
-        '~/' =>  [ 'configs/screenrc/.screenrc' ],
+        '~/' =>  [ 
+            'configs/screenrc/.screenrc',
+            'configs/gitconfig/.gitconfig' 
+        ],
+        '~/.tools/' => 'files/tools/*',
     }
 }
 

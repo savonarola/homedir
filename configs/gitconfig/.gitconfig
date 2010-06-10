@@ -1,0 +1,19 @@
+[user]
+	email = ilya.averyanov@gmail.com
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+[diff]
+	renamelimit = 0
+[merge]
+  summary = true
+[alias]
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    lg = log -p
+
