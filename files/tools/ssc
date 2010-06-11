@@ -1,0 +1,17 @@
+#!/bin/sh
+# vim: set filetype=bash
+
+ssh_hosts=""
+i=1
+
+for arg; do
+    if [ $i == $# ]; then
+        ssh_hosts="$ssh_hosts ssh $arg "
+    else
+        ssh_hosts="$ssh_hosts ssh -t -t $arg "
+    fi
+    let i++
+done
+
+$ssh_hosts
+
