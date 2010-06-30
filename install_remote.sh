@@ -31,7 +31,7 @@ for arg; do
     let i++
 done
 
-if [ "${ssh_hosts}x" == "x" ]; then
+if [ "${ssh_hosts}x" = "x" ]; then
     echo "$usage"
     exit 255
 fi
