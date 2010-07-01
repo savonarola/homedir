@@ -14,7 +14,7 @@ if [ "$?" -eq 0 ]; then
 
   oldclip="$(xclip -o)"
   
-  echo "echo -e \"\\x1B]2;$title\\x07\"; $*" | xclip -i 
+  echo "set-title.sh $title; $*" | xclip -i 
   xdotool key shift+Insert
 
   echo "$oldclip" | xclip -i
