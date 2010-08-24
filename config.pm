@@ -19,6 +19,12 @@
                 { files => 'configs/zshrc/bsd/*', flags => 'freebsd openbsd' },
             ],
         },
+        {
+            config => '.bashrc',
+            external => [ 
+                'configs/bashrc/??_*.sh',
+            ],
+        },
     ],
 
     files => {
