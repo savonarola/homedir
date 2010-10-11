@@ -516,6 +516,12 @@ screenshot() {
     scrot -q $quality -d $delay "$HOME/screenshot_`date +'%F'`.jpg"
 }
 
+
+export LESS='-MQR'
+PROMPT_COMMAND="bash_prompt.pl"
+export PATH="$PATH:/home/savonarola/.tools/";
+
+
 #-----------------------------------------------------------------------------
 # Автостарт
 #-----------------------------------------------------------------------------
