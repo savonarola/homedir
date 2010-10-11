@@ -10,10 +10,12 @@ close CHLD_OUT;
 close CHLD_ERR;
 waitpid $pid, 0;
 
-chomp $output;
-$output =~s/^[\s\*]*//g;
-$output =~s/[\s\*]*$//g;
-print "[$output]";
+if($output) {
+    chomp $output;
+    $output =~s/^[\s\*]*//g;
+    $output =~s/[\s\*]*$//g;
+    print "[$output]";
+}
 
 
 
