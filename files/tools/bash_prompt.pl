@@ -17,7 +17,7 @@ if($output) {
     chomp $output;
     $output =~s/^[\s\*]*//g;
     $output =~s/[\s\*]*$//g;
-    print "[$output]";
+    print "[$output]\n";
 }
 
 
