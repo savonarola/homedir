@@ -1,40 +1,16 @@
-__distribution="Debian" #Адаптирует конфиг под Debian   
-
-#Переменные для mpc
-#export MPD_HOST="192.168.10.5"
-#export MPD_PORT="6600"
-
-#Остальные переменные
-#-----------------------------------------------------------------------------
-#Выходит из рута если неактивен в течении N секунд
-[ "$UID" = 0 ] && export TMOUT=180
-
 export PAGER="less"
 export EDITOR="vim"
 export VISUAL=$EDITOR
-if [ "$UID" != 0 ]; then
-    export XPAGER=$PAGER
-    export XEDITOR="jedit"
-fi
 
 bind '"\C-u"':kill-whole-line
 bind '"\e[A"':history-search-backward
 bind '"\e[B"':history-search-forward
 bind '"\e[3~"':delete-char
 
-
 # less
-export LESS="-MWi -x4 --shift 5"
-export LESSHISTFILE="-"     # no less history file
+export LESS="-MQR"
 if [ "$UID" != 0 ]; then
     export LESSCHARSET="utf-8"
-    if [ -z "$LESSOPEN" ]; then
-        if [ "$__distribution" = "Debian" ]; then
-            [ -x "`which lesspipe`" ] && eval "$(lesspipe)"
-        else
-            [ -x "`which lesspipe.sh`" ] && export LESSOPEN="|lesspipe.sh %s"
-        fi
-    fi
     # Цветные маны через less
     export LESS_TERMCAP_mb=$'\E[01;31m'
     export LESS_TERMCAP_md=$'\E[01;31m'
@@ -47,29 +23,8 @@ fi
 
 # Bash history
 export HISTSIZE=50000
-export HISTFILESIZE=50000
+export HISTFILESIZE=5000000
 export HISTFILE="$HOME/.bash_history_${HOSTNAME}"
-if [ "$UID" != 0 ]; then
-    export HISTCONTROL="ignoreboth"  
-    export HISTIGNORE="[bf]g:exit:logout"
-fi
-
-# dircolors
-if [ -s "$HOME/.dircolors" ]; then
-    eval "`dircolors -b $HOME/.dircolors`"
-else
-    eval "`dircolors -b`"
-fi
-
-
-# Java
-if [ "$__distribution" = "Debian" ]; then
-    export JAVA_HOME="/usr/lib/jvm/java-6-sun"
-fi
-
-
-# Ctrl+D дважды для loguot 
-export IGNOREEOF=1
 
 set_prompts() {
     # Обычные цвета
@@ -174,227 +129,15 @@ shopt -s cmdhist      \
 #-----------------------------------------------------------------------------
 # Алиасы + дополнительные функции
 #-----------------------------------------------------------------------------
-alias ls="ls $LS_OPTIONS"
 alias l="ls -l"
-alias ll="ls -l"
-alias la="ls -lA"
-alias lh="ls -lh"
-alias lah="ls -lAh"
+alias ll="ls -lo --color=yes"
 alias p="$PAGER"
 alias e="$EDITOR"
 alias v="$EDITOR"
 alias vi="vim"
-alias nano="nano -w"
-alias mc="mc -b"
 
 
-if [ "$UID" = 0 ]; then
-    return 0
-fi
-
-
-# ------------- Дальше для простых смертных (пользователей) --------------
-
-
-if [ "$DISPLAY" ]; then
-    alias p="$XPAGER"
-    alias e="$XEDITOR"
-fi
-
-alias cd="cdpushd >/dev/null"
-alias b="popd >/dev/null"
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-
-alias cp="cp -i"   
-alias mv="mv -i"  
-alias rm="rm -i" 
-alias mkdir="mkdir -p"
-alias co="chown"
-alias cm="chmod"
 alias g="grep -i"
-alias df="df -hT"
-alias du="du -hsc"
-alias free="free -m"
-alias ps="ps -efH"
-alias psr="ps -U root -u root u"
-alias top="htop"
-alias m="mount | column -t 2>/dev/null"
-alias f="find | grep"       
-alias path='echo -e ${PATH//:/\\n}'
-alias dirs="dirs -v"
-alias jobs="jobs -l"
-
-#alias irs="LANG=ru_RU.KOI8-R irssi"
-
-alias s="sudo"
-alias ss="sudo -s"
-
-alias openports="netstat -nape --inet"
-alias myip="curl www.whatismyip.org"
-alias ping="ping -c 4"
-alias ns="netstat -alnp --protocol=inet | grep -v CLOSE_WAIT | cut -c-6,21-94 | tail"
-alias ns2="sudo watch -n 3 -d -t netstat -vantp"
-alias scp="scp -pr"
-alias wget="wget -c"
-
-alias startx="exec startx"
-alias dosbox="dosbox -conf $HOME/.dosboxrc"
-alias clam="clamscan --bell -i"
-alias mp="mplayer"
-alias cdt="eject -T"     
-
-alias resetresolution="xrandr --size 1680x1050"
-alias resetgamma="xgamma -gamma 1.0"
-
-alias mute="amixer -q set Front toggle"
-alias unmute="mute"
-
-# Немного виндовых привычек :)
-alias cls="clear"
-alias ipconfig="ifconfig"
-#alias chdir="cd"
-#alias dir="ls -l"
-#alias copy="cp"
-#alias xcopy="cp -r"
-#alias move="mv"
-#alias ren="mv"
-#alias del="rm"
-#alias deltree="rm -r"
-#alias md="mkdir -p"
-#alias rd="rmdir"
-#alias mem="free -m"
-
-#Разукрашиваемся ;)
-if which grc &>/dev/null; then
-    alias .cl='grc -es --colour=auto'
-    alias configure='.cl ./configure'
-    alias diff='.cl diff'
-    alias make='.cl make'
-    alias gcc='.cl gcc'
-    alias g++='.cl g++'
-    alias ld='.cl ld'
-    alias netstat='.cl netstat'
-    alias ping='.cl ping -c 10'
-    alias traceroute='.cl traceroute'
-fi
-
-# Помните переменную?
-case "$__distribution" in
-    ArchLinux)
-        alias ,="pacman"
-        alias ,l="pacman -Q"         
-        alias ,ll="pacman -Ql"       
-        alias ,o="pacman -Qo"       
-        alias ,?="pacman -Si"       
-        alias ,??="pacman -Qi"      
-        alias ,s="pacsearch"         
-        alias ,u="sudo pacman -Sy"   
-        alias ,uu="sudo pacman -Syu"
-        alias ,i="sudo pacman -S"    
-        alias ,ii="sudo pacman -U"   
-        alias ,r="sudo pacman -Rs"   
-        alias ,p="sudo pacman -Rns"  
-
-        # :D
-        alias icanhas="sudo pacman -S"
-        alias donotwant="sudo pacman -Rs"
-
-        # yaourt 
-        alias yr="yaourt"
-        alias yrl="yaourt -Q"
-        alias yrll="yaourt -Ql"
-        alias yro="yaourt -Qo"
-        alias yr?="yaourt -Si"
-        alias yr??="yaourt -Qi"
-        alias yrs="yaourt -Ss"
-        alias yru="yaourt -Sy"
-        alias yruu="yaourt -Syu --aur"   
-        alias yri="yaourt -S"
-        alias yrii="yaourt -U"
-        alias yrr="yaourt -Rs"
-        alias yrp="yaourt -Rns"
-        alias yrg="yaourt -G"   
-
-        #Цветастый поиск
-        pacsearch() {
-            echo -e "$(pacman -Ss $@ | sed \
-            -e 's#core/.*#\\033[1;31m&\\033[0;37m#g' \
-            -e 's#extra/.*#\\033[0;32m&\\033[0;37m#g' \
-            -e 's#community/.*#\\033[1;35m&\\033[0;37m#g' \
-            -e 's#^.*/.* [0-9].*#\\033[0;36m&\\033[0;37m#g' )"
-        }
-    ;;
-    Debian)
-        alias ,="aptitude"
-        alias ,,="apt-get"
-        alias ,,,="dpkg"
-        alias ,l="dpkg -l"
-        alias ,ll="dpkg -L"
-        alias ,o="dpkg -S"
-        alias ,?="aptitude show"
-        alias ,??="dpkg -p"
-        alias ,s="aptitude search"
-        alias ,u="sudo aptitude update"
-        alias ,uu="sudo aptitude update && sudo aptitude safe-upgrade"
-        alias ,uuu="sudo aptitude update && sudo aptitude full-upgrade"
-        alias ,i="sudo aptitude install"
-        alias ,ii="sudo dpkg -i"
-        alias ,r="sudo aptitude remove"
-        alias ,p="sudo aptitude purge"
-
-        # :D
-        alias icanhas="sudo aptitude install"
-        alias donotwant="sudo aptitude remove"
-
-        debian_listreconfigurable() {
-            ls /var/lib/dpkg/info/*.templates | xargs -n 1 basename | sed -e "s/.templates$//"
-        }
-    
-        debian_purge() {
-            local pkgs="`dpkg -l | grep ^rc | cut -d' ' -f3`"
-            if [ ! -z "$pkgs" ]; then
-                echo "Эти пакеты будут удалены но конфиги остануться:"
-                echo "$pkgs"
-                echo -n "Точно удалить? [Y/n] "
-                read -n 1 choice
-                if [ -z "$choice" ] || [ "$choice" = "y" ] || [ "$choice" = "Y" ]; then
-                        echo "$pkgs" | xargs sudo aptitude purge
-                fi
-            else
-                echo "Нет пакетов."
-            fi
-        }
-    ;;
-esac
-
-
-cdpushd() {
-    if [ -n "$1" ]; then
-        pushd "$*"
-    else
-        if [ "`pwd`" != "$HOME" ]; then
-            pushd ~
-        fi
-    fi
-}
-
-# Бекап (пока эспериментальный)
-# Использовать так: bak <file(s)/dir(s)>
-bak() {
-    bakdir="$HOME/.backup"
-
-    [ ! -d "$bakdir" ] && mkdir -p -m 700 "$bakdir"
-
-    for f in "$@"; do
-        f="`echo "$f" | sed 's!/\+$!!'`"   
-        command cp -ai "$f" "$HOME/.backup/$f.bak`date +'%Y%m%d%H%M'`"
-    done
-}
 
 # Запустить команду в бекграунде и без вывода.
 # Использовать так: nh <command>
@@ -413,21 +156,6 @@ mvd() {
     mv "$1" "$2"
 }
 
-# Управление screen'ом
-# Использовать так: 'screen' выведет список открытых скринов,'screen <name>' переводит в скрин с именем <name>,'screen <name>' создает скрин с именем <name>
-screen() {
-    if ! which screen &>/dev/null; then
-        echo "${FUNCNAME[0]}(): You must install 'screen' first."
-        return 1
-    fi
-
-    if [ "$1" ]; then
-        command screen -D -R -a -A -S $HOSTNAME.$1
-    else
-        command screen -ls
-        echo "To reattach a running session, type 'screen <sessionname>'"
-    fi
-}
 
 # Создает архив из директории
 mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
@@ -481,74 +209,6 @@ x() {
     esac
 }
 
-# Устанавливает "стандартные" права (644/755), рекурсивно
-# Использовать так: resetp <files/dirs>
-resetp() {
-    chmod -R u=rwX,go=rX "$@"
-}
-
-#Напоминалка 
-# Использовать так:   remindme <time> <text>
-# Пример: remindme 10m "omg, the pizza"
-remindme() {
-    if which zenity &>/dev/null; then
-        echo "${FUNCNAME[0]}(): You must install 'zenity' first."
-        return 1
-    fi
-
-    sleep "$1" && zenity --info --text "$2" &
-}
-
-# Скриншот
-# Использовать так: screenshot [seconds delay] [quality]
-screenshot() {
-    if ! which scrot &>/dev/null; then
-        echo "${FUNCNAME[0]}(): You must install 'scrot' first."
-        return 1
-    fi
-
-    local delay=10
-    local quality=95
-
-    [ "$1" ] && delay="$1"
-    [ "$2" ] && quality="$2"
-
-    scrot -q $quality -d $delay "$HOME/screenshot_`date +'%F'`.jpg"
-}
-
-
-export LESS='-MQR'
 PROMPT_COMMAND="bash_prompt.pl"
 export PATH="$PATH:/home/savonarola/.tools/";
 
-
-#-----------------------------------------------------------------------------
-# Автостарт
-#-----------------------------------------------------------------------------
-# Выводит инфу о системе
-#echo -e "\nuptime: `uptime | cut -b 14-27`"
-#echo -e "\nlast:"
-#last -3 | head -n $(expr $(last -3 | wc -l) - 2)
-
-# fortune
-#if which fortune &>/dev/null; then
-#    echo -e "\n------------------------------------------------------------------------------\n"
-#    fortune -a
-#    echo -e "\n------------------------------------------------------------------------------\n"
-#fi
-
-# Это должно быть в конце:
-# Стартует Х11 автоматом..
-#if [ -z "$DISPLAY" ]; then
-#    tty="`tty`"
-#    for t in "/dev/vc/1" "vc/1" "/dev/tty1" "tty1"; do
-#        if [ "$tty" = "$t" ]; then
-#            n=2
-#            echo "Исксы запустятся через $n сукунд ... Ctrl+C для отмены ..."
-#            echo
-#            sleep $n
-#            exec startx
-#        fi
-#    done
-#fi
-#-----------------------------------------------------------------------------
