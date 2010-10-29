@@ -72,6 +72,8 @@ terminfo xterm|fptwist hs@:cs=\E[%i%p1%d;%p2%dr:im=\E[4h:ei=\E[4l
 termcap xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 terminfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 
+termcapinfo xterm ti@:te@
+
 #
 # Do not use xterms alternate window buffer. 
 # This one would not add lines to the scrollback buffer.
@@ -87,6 +89,7 @@ terminfo hp700 'Z0=\E[?3h:Z1=\E[?3l:hs:ts=\E[62"p\E[0$~\E[2$~\E[1$}:fs=\E[0}\E[6
 #essential to have it here, as this is a slow terminal.
 termcap wy75-42 nx:xo:Z0=\E[?3h\E[31h:Z1=\E[?3l\E[31h
 terminfo wy75-42 nx:xo:Z0=\E[?3h\E[31h:Z1=\E[?3l\E[31h
+
 
 #remove some stupid / dangerous key bindings
 bind ^k
