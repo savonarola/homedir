@@ -1,2 +1,1 @@
-set termencoding=utf-8
-
+set encoding=utf8
