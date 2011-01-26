@@ -130,7 +130,6 @@ shopt -s cmdhist      \
 # Алиасы + дополнительные функции
 #-----------------------------------------------------------------------------
 alias l="ls -l"
-alias ll="ls -lo --color=yes"
 alias p="$PAGER"
 alias e="$EDITOR"
 alias v="$EDITOR"

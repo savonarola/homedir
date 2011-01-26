@@ -85,7 +85,6 @@ sub install_config
             push @includes, $include;
         }
     }
-    #die Dumper( \@includes );
     $_->install( $config ) for @includes;
     $config->write();
 }

@@ -23,6 +23,10 @@
             config => '.bashrc',
             external => [ 
                 'configs/bashrc/??_*.sh',
+                { files => 'configs/bashrc/utf.sh', flags => 'utf' },
+                { files => 'configs/bashrc/cp1251.sh', flags => 'cp1251' },
+                { files => 'configs/bashrc/linux/*', flags => 'linux' },
+                { files => 'configs/bashrc/bsd/*', flags => 'freebsd openbsd' },
             ],
         },
     ],
@@ -31,7 +35,8 @@
         '~/.vim/' => 'files/vim/*',
         '~/' =>  [ 
             'configs/screenrc/.screenrc',
-            'configs/gitconfig/.gitconfig' 
+            'configs/gitconfig/.gitconfig',
+            'configs/bashrc/.bash_profile',
         ],
         '~/.tools/' => 'files/tools/*',
     }
