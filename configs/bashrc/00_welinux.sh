@@ -209,5 +209,5 @@ x() {
 }
 
 PROMPT_COMMAND="bash_prompt.pl"
-export PATH="$PATH:/home/savonarola/.tools/";
+export PATH="$PATH:$HOME/.tools/";
 
