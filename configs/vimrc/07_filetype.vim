@@ -9,4 +9,5 @@ au BufRead,BufNewFile *.pm set filetype=perl
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufRead,BufNewFile *.haml set filetype=haml
+au BufRead,BufNewFile *.hs set filetype=haskell
 
