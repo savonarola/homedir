@@ -1,6 +1,7 @@
 filetype plugin on
 
 au FileType perl set iskeyword=@,48-57,_,192-255,:
+au FileType haskell set includeexpr=substitute(v:fname,'\\.','/','g')
 
 au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php

@@ -6,6 +6,7 @@ endfunction
  
 command! -complete=file -nargs=+ Find call s:FindEmAll(<f-args>)
 
+set path+=./**
 set suffixesadd=.pl,.pm,.yml,.yaml,.hs " for `gf' (open file under cursor)
 map <C-H> :Moccur<cr>
 
