@@ -210,3 +210,6 @@ x() {
 PROMPT_COMMAND="bash_prompt.pl"
 export PATH="$PATH:$HOME/.tools/";
 
+alias pbe='env RAILS_ENV=production bundle exec'
+alias pdb='pbe rails db'
+alias pc='pbe rails c'

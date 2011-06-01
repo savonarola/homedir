@@ -71,3 +71,7 @@ if [[ -x `which git 2> /dev/null` ]]; then
     }
     
 fi
+
+alias pbe='env RAILS_ENV=production bundle exec'
+alias pdb='pbe rails db'
+alias pc='pbe rails c'
