@@ -13,6 +13,7 @@
             config => '.zshrc',
             external => [ 
                 'configs/zshrc/??_*.sh',
+                'configs/sh-common/*.sh',
                 { files => 'configs/zshrc/utf.sh', flags => 'utf fbprod' },
                 { files => 'configs/zshrc/cp1251.sh', flags => 'cp1251' },
                 { files => 'configs/zshrc/umask.sh', flags => 'fbprod' },
@@ -24,6 +25,7 @@
             config => '.bashrc',
             external => [ 
                 'configs/bashrc/??_*.sh',
+                'configs/sh-common/*.sh',
                 { files => 'configs/bashrc/utf.sh', flags => 'utf fbprod' },
                 { files => 'configs/bashrc/cp1251.sh', flags => 'cp1251' },
                 { files => 'configs/bashrc/linux/*', flags => 'linux' },
