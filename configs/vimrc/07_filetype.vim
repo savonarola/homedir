@@ -2,6 +2,7 @@ filetype plugin on
 
 au FileType perl set iskeyword=@,48-57,_,192-255,:
 au FileType haskell set includeexpr=substitute(v:fname,'\\.','/','g')
+au FileType coffee set noexpandtab
 
 au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php
@@ -11,4 +12,5 @@ au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufRead,BufNewFile *.haml set filetype=haml
 au BufRead,BufNewFile *.hs set filetype=haskell
+au BufRead,BufNewFile *.coffee set filetype=coffee
 
