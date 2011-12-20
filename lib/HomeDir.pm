@@ -121,7 +121,19 @@ sub get_files
 }
 
 
-
+sub install_oh_my_zsh
+{
+    my ($self) = @_;
+    my $zshcfg = join $self->fs_separator(), $self->home(), '.zshrc';
+    my $zshcfg_bckp = join $self->fs_separator(), $self->home(), '.zshrc.bckp';
+    my $zshcfg_oh_my = join $self->fs_separator(), $self->home(), '.zshrc.oh_my';
+    my $oh_my = join $self->fs_separator(), $self->home(), '.oh-my-zsh';
+    $self->system(rm => '-rf', $oh_my); 
+    $self->system(cp => '-f', $zshcfg, $zshcfg_bckp); 
+    $self->system(bash => '-c', 'curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | bash');
+    $self->system(mv => $zshcfg, $zshcfg_oh_my);
+    $self->system(mv => $zshcfg_bckp, $zshcfg);
+}
 
 
 

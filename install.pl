@@ -22,6 +22,8 @@ if( $@ ) {
     die "Error reading $cfg_file : $@\n";
 }
 
+
+HomeDir->install_oh_my_zsh();
 HomeDir->install( $cfg, $flags );
 
 
