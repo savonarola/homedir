@@ -23,7 +23,7 @@ if( $@ ) {
 }
 
 
-HomeDir->install_oh_my_zsh();
+#HomeDir->install_oh_my_zsh();
 HomeDir->install( $cfg, $flags );
 
 
