@@ -11,4 +11,4 @@ pwgen
 
 quick install:
 
-bash <(curl https://raw.github.com/savonarola/homedir2/master/files/tools/homedir2_update.sh) remte utf
+bash <(curl https://raw.github.com/savonarola/homedir2/master/files/tools/homedir2_update.sh) remote utf
