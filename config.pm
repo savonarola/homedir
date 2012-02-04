@@ -39,6 +39,7 @@
         '~/.vim/' => 'files/vim/*',
         '~/' =>  [ 
             'configs/screenrc/.screenrc',
+            'configs/tmux/.tmux.conf',
             'configs/gitconfig/.gitconfig',
             'configs/bashrc/.bash_profile',
         ],
