@@ -8,6 +8,7 @@ au BufRead,BufNewFile *.phps set filetype=php
 au BufRead,BufNewFile *.thtml set filetype=php
 au BufRead,BufNewFile *.pl set filetype=perl
 au BufRead,BufNewFile *.pm set filetype=perl
+au BufRead,BufNewFile *.ru set filetype=ruby
 au BufRead,BufNewFile *.rb set filetype=ruby
 au BufRead,BufNewFile *.hrl set filetype=erlang
 au BufRead,BufNewFile *.haml set filetype=haml
