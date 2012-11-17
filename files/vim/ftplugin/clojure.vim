@@ -142,6 +142,6 @@ if exists("b:vimclojure_namespace")
 	augroup END
 endif
 
-call vimclojure#MapPlug("n", "p", "CloseResultBuffer")
+"call vimclojure#MapPlug("n", "p", "CloseResultBuffer")
 
 let &cpo = s:cpo_save
