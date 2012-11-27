@@ -17,4 +17,13 @@
     co = checkout
     df = diff
     lg = log -p
+[gitflow "branch"]
+    master = master
+    develop = develop
+[gitflow "prefix"]
+    feature = feature-
+    release = release-
+    hotfix = hotfix-
+    support = support-
+    versiontag = 
 
