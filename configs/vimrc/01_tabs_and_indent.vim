@@ -16,9 +16,9 @@ au FileType haml set shiftwidth=2
 au FileType haml set softtabstop=2
 au FileType haml set tabstop=2
 
-au FileType erlang set shiftwidth=2
-au FileType erlang set softtabstop=2
-au FileType erlang set tabstop=2
+au FileType erlang set shiftwidth=4
+au FileType erlang set softtabstop=4
+au FileType erlang set tabstop=4
 
 au FileType haskell set shiftwidth=2
 au FileType haskell set softtabstop=2
