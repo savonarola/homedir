@@ -27,3 +27,7 @@ au FileType haskell set tabstop=2
 au FileType clojure set shiftwidth=2
 au FileType clojure set softtabstop=2
 au FileType clojure set tabstop=2
+
+autocmd BufNewFile,BufRead *.scss set filetype=scss
+
+
