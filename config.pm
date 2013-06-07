@@ -42,6 +42,7 @@
             'configs/tmux/.tmux.conf',
             'configs/gitconfig/.gitconfig',
             'configs/bashrc/.bash_profile',
+            'configs/ack/.ackrc',
         ],
         '~/.tools/' => 'files/tools/*',
     }
