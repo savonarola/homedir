@@ -19,7 +19,7 @@ if [[ -x `which git 2> /dev/null` ]]; then
                     
                     gstatus=$(git status 2> /dev/null)
                     
-                    dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'nothing to commit (working directory clean)';)
+                    dirty=$(echo $gstatus | sed 's/^#.*$//' | tail -2 | grep 'working directory clean';)
                     if [[ x$dirty = x ]]; then
                         color=$fg[magenta]
                     fi
