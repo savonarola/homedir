@@ -19,4 +19,5 @@ au BufRead,BufNewFile *.haml set filetype=haml
 au BufRead,BufNewFile *.hs set filetype=haskell
 au BufRead,BufNewFile *.coffee set filetype=coffee
 au BufNewFile,BufRead *.scss set filetype=scss
+au BufNewFile,BufRead *.config set filetype=erlang
 
