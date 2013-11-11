@@ -1,12 +1,6 @@
 {
     configs => [
         {
-            config => '.vimrc',
-            vim_external => [ 
-                'configs/vimrc/*.vim', 
-            ],
-        },
-        {
             config => '.zshrc',
             external => [ 
                 'configs/zshrc/??_*.sh',
@@ -35,6 +29,7 @@
     files => {
         '~/.vim/' => 'files/vim/*',
         '~/' =>  [ 
+            'configs/vimrc/.vimrc',
             'configs/screenrc/.screenrc',
             'configs/tmux/.tmux.conf',
             'configs/gitconfig/.gitconfig',
