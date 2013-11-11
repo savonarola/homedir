@@ -8,9 +8,6 @@ call vundle#rc()
 " required! 
 Bundle 'gmarik/vundle'
 
-" My bundles here:
-"
-" original repos on GitHub
 Bundle 'tpope/vim-fugitive'
 Bundle 'rosstimson/scala-vim-support'
 Bundle 'scrooloose/nerdcommenter'
@@ -25,5 +22,6 @@ Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/taglist.vim'
 
+Bundle 'savonarola/vimfiles'
 
-
+filetype plugin indent on     " required!
