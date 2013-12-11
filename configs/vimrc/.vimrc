@@ -5,12 +5,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'rosstimson/scala-vim-support'
-Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
@@ -23,5 +22,6 @@ Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/taglist.vim'
 
 Bundle 'savonarola/vimfiles'
+Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on     " required!
