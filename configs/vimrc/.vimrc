@@ -20,6 +20,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'Keithbsmiley/rspec.vim'
 
 Bundle 'savonarola/vimfiles'
 Bundle 'scrooloose/nerdcommenter'
