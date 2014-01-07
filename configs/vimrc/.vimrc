@@ -21,6 +21,7 @@ Bundle 'mattn/gist-vim'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'Keithbsmiley/rspec.vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 Bundle 'savonarola/vimfiles'
 Bundle 'scrooloose/nerdcommenter'
