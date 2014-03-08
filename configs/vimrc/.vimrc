@@ -25,6 +25,7 @@ Bundle 'Keithbsmiley/rspec.vim'
 Bundle 'terryma/vim-multiple-cursors'
 
 Bundle 'savonarola/vimfiles'
+Bundle 'ingydotnet/yaml-vim'
 Bundle 'scrooloose/nerdcommenter'
 
 filetype plugin indent on     " required!
