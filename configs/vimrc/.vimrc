@@ -10,7 +10,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive'
 Bundle 'rosstimson/scala-vim-support'
-Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/git-nerdtree'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 Bundle 'corntrace/bufexplorer'
