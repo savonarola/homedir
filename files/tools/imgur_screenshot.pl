@@ -24,5 +24,6 @@ $xml =~ m!<original_image>(.*?)</original_image>! or die "Can't upload image to 
 my $image_link = $1;
 
 run "/bin/echo -n $image_link | pbcopy";
+print $image_link;
 
 
