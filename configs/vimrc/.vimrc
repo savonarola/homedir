@@ -27,5 +27,6 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'savonarola/vimfiles'
 Bundle 'ingydotnet/yaml-vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on     " required!
