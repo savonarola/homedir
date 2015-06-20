@@ -1,0 +1,136 @@
+#!/usr/bin/perl
+# vim: set filetype=perl :
+
+use strict;
+use warnings;
+use Test::More;
+
+sub cmp_tags {
+    my ($a, $b) = @_;
+    return (
+        $a->{major} <=> $b->{major} ||
+        $a->{middle} <=> $b->{middle} ||
+        $a->{minor} <=> $b->{minor} ||
+        ($a->{patch} || 0) <=> ($b->{patch} || 0)
+    );
+}
+
+sub null_tag {
+    return {
+        major => 0,
+        middle => 0,
+        minor => 0
+    }
+}
+
+sub valid_level {
+    my $level = shift;
+    if({major => 1, middle => 1, minor => 1, patch => 1, p => 1, mj => 1, md => 1, mn => 1}->{$level}) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+sub increase_version {
+
+    my ($level, $tags) = @_;
+
+    $level ||= '';
+
+    my @levels = qw(major middle minor patch);
+
+    my @tags = map { /^(\d+)\.(\d+)\.(\d+)(?:-(\d+))?/ ? { major => int $1, middle => int $2, minor => int $3, patch => (defined $4 ? int $4 : undef ) } : () } map { chomp; $_ } @$tags;
+
+    my @sorted_tags = sort { cmp_tags($a, $b) } @tags;
+
+    my $tag = pop @sorted_tags || null_tag();
+
+    my $level_shortcuts = {
+        mj => 'major',
+        md => 'middle',
+        mn => 'minor',
+        p => 'patch'
+    };
+
+    $level = $level_shortcuts->{$level} if $level_shortcuts->{$level};
+
+    return undef unless valid_level($level);
+
+    my $need_set_null = 0;
+    foreach my $l (@levels) {
+        if($need_set_null) {
+            $tag->{$l} = 0 if defined $tag->{$l};
+        }
+        if($l eq $level) {
+            $tag->{$l} ++;
+            $need_set_null = 1;
+        }
+    }
+
+    delete $tag->{patch} unless $tag->{patch};
+
+    my $new_tag = $tag->{major} . "." . $tag->{middle} . "." . $tag->{minor} . (defined($tag->{patch}) ? "-" . $tag->{patch} : '' );
+
+    return $new_tag;
+}
+
+sub test {
+    is('2.3.4-6', increase_version('patch', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'patch');
+
+    is('2.3.4-6', increase_version('p', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'patch');
+
+    is('2.3.5', increase_version('minor', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'minor');
+
+    is('2.3.5', increase_version('mn', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'minor');
+
+    is('2.4.0', increase_version('middle', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'middle');
+
+    is('2.4.0', increase_version('md', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'middle');
+
+    is('3.0.0', increase_version('major', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'major');
+
+    is('3.0.0', increase_version('mj', [qw(
+        1.2.3
+        2.3.4-5
+    )]), 'major');
+
+    done_testing();
+}
+
+my $level = shift;
+$level ||= '';
+
+if($level eq 'test') {
+    test();
+} else {
+    die "Usage: $0 major|middle|minor|patch [command...]\n" unless valid_level($level);
+    my $new_tag_str = increase_version($level, [`git tag`]);
+    if(@ARGV) {
+        system "/usr/bin/env", "CAP_RELEASE_VERSION=".$new_tag_str, @ARGV;
+    } else {
+        print "$new_tag_str\n";
+    }
+}
+
