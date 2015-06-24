@@ -32,19 +32,35 @@ sub valid_level {
     }
 }
 
-sub increase_version {
-
-    my ($level, $tags) = @_;
-
-    $level ||= '';
-
-    my @levels = qw(major middle minor patch);
+sub last_tag {
+    my $tags = shift;
 
     my @tags = map { /^(\d+)\.(\d+)\.(\d+)(?:-(\d+))?/ ? { major => int $1, middle => int $2, minor => int $3, patch => (defined $4 ? int $4 : undef ) } : () } map { chomp; $_ } @$tags;
 
     my @sorted_tags = sort { cmp_tags($a, $b) } @tags;
 
     my $tag = pop @sorted_tags || null_tag();
+
+    return $tag;
+}
+
+sub tag_to_string {
+    my $tag = shift;
+
+    my $str_tag = $tag->{major} . "." . $tag->{middle} . "." . $tag->{minor} . (defined($tag->{patch}) ? "-" . $tag->{patch} : '' );
+
+    return $str_tag;
+}
+
+sub increase_version {
+
+    my ($level, $tags) = @_;
+
+    my $tag = last_tag($tags);
+
+    $level ||= '';
+
+    my @levels = qw(major middle minor patch);
 
     my $level_shortcuts = {
         mj => 'major',
@@ -70,9 +86,8 @@ sub increase_version {
 
     delete $tag->{patch} unless $tag->{patch};
 
-    my $new_tag = $tag->{major} . "." . $tag->{middle} . "." . $tag->{minor} . (defined($tag->{patch}) ? "-" . $tag->{patch} : '' );
 
-    return $new_tag;
+    return tag_to_string($tag);
 }
 
 sub test {
@@ -120,9 +135,11 @@ sub test {
 }
 
 my $level = shift;
-$level ||= '';
 
-if($level eq 'test') {
+if(!defined($level)) {
+    my $last_tag = last_tag([`git tag`]);
+    print tag_to_string($last_tag)."\n";
+} elsif($level eq 'test') {
     test();
 } else {
     die "Usage: $0 major|middle|minor|patch [command...]\n" unless valid_level($level);
