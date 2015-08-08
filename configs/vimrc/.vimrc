@@ -28,5 +28,6 @@ Bundle 'savonarola/vimfiles'
 Bundle 'ingydotnet/yaml-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
+Bundle 'motus/pig.vim'
 
 filetype plugin indent on     " required!
