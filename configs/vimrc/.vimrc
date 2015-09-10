@@ -29,5 +29,6 @@ Bundle 'ingydotnet/yaml-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'motus/pig.vim'
+Bundle 'elixir-lang/vim-elixir'
 
 filetype plugin indent on     " required!
