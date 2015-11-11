@@ -30,5 +30,6 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'mileszs/ack.vim'
 Bundle 'motus/pig.vim'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'lambdatoast/elm.vim'
 
 filetype plugin indent on     " required!
