@@ -1,36 +1,38 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'tpope/vim-fugitive'
-Bundle 'rosstimson/scala-vim-support'
-Bundle 'Xuyuanp/git-nerdtree'
-Bundle 'mileszs/ack.vim'
-Bundle 'bling/vim-airline'
-Bundle 'corntrace/bufexplorer'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'mattn/codepad-vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'Keithbsmiley/rspec.vim'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
+Plugin 'rosstimson/scala-vim-support'
+Plugin 'Xuyuanp/git-nerdtree'
+Plugin 'mileszs/ack.vim'
+Plugin 'bling/vim-airline'
+Plugin 'corntrace/bufexplorer'
+Plugin 'vim-scripts/VimClojure'
+Plugin 'mattn/codepad-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
-Bundle 'savonarola/vimfiles'
-Bundle 'ingydotnet/yaml-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'mileszs/ack.vim'
-Bundle 'motus/pig.vim'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'lambdatoast/elm.vim'
-Bundle 'evanmiller/nginx-vim-syntax'
+Plugin 'savonarola/vimfiles'
+Plugin 'ingydotnet/yaml-vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'mileszs/ack.vim'
+Plugin 'motus/pig.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'evanmiller/nginx-vim-syntax'
 
-filetype plugin indent on     " required!
+call vundle#end()            " required
+filetype plugin indent on    " required
+
