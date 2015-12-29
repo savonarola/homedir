@@ -31,5 +31,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'motus/pig.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'lambdatoast/elm.vim'
+Bundle 'evanmiller/nginx-vim-syntax'
 
 filetype plugin indent on     " required!
