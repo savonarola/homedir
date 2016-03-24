@@ -16,6 +16,7 @@ alias :e="vim"
 alias gv="gvim"
 alias g='grep --color=auto'
 alias irb='irb --readline -r irb/completion'
+alias ll='ls -la --color=yes'
 
 alias dp="vsn patch bundle exec cap production release:deploy"
 alias dmn="vsn minor bundle exec cap production release:deploy"
