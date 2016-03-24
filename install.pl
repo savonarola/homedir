@@ -5,7 +5,7 @@ use File::Basename;
 use FindBin qw($Bin);
 use POSIX qw(strftime);
 
-my $INSTALL_ID = strftime("%F-%H%M%S").int(rand(99999999));
+my $INSTALL_ID = "backup-".strftime("%F-%H%M%S", localtime())."-".int(rand(99999999));
 
 my @INSTALL = (
   [".bash_profile", ""],
