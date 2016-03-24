@@ -10,7 +10,7 @@ fi
 mkdir $tmprepo;
 pushd $tmprepo;
 git clone git://github.com/savonarola/homedir.git
-perl install.pl
+perl homedir/install.pl
 popd
 rm -Rf $tmprepo
 
