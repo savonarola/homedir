@@ -1,6 +1,5 @@
 brew "ack"
 brew "ag"
-brew "ctags"
 brew "git"
 brew "pwgen"
 brew "macvim"

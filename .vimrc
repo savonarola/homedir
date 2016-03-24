@@ -20,7 +20,6 @@ Plugin 'mattn/codepad-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'tpope/vim-rails'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'terryma/vim-multiple-cursors'
 
