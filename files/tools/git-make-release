@@ -1,7 +1,0 @@
-cur_date=$(date '+%Y%m%d%H%M%S')
-echo "Making release release-$cur_date"
-git checkout master
-git checkout -b release-$cur_date
-git push -u origin release-$cur_date
-git checkout master
-echo "Done"

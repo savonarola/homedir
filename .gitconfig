@@ -1,6 +1,3 @@
-[user]
-	email = av@fun-box.ru
-    name = av
 [color]
     diff = auto
     status = auto
@@ -25,5 +22,7 @@
     release = release-
     hotfix = hotfix-
     support = support-
-    versiontag = 
+    versiontag =
+[include]
+    path = .gitconfig.local
 
