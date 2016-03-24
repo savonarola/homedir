@@ -13,5 +13,5 @@ bash <(curl -s https://raw.githubusercontent.com/savonarola/homedir/master/insta
 or, at your own risk, a shortcut for this:
 
 ```bash
-    bash <(curl -s https://rubybox.ru/hd)
+bash <(curl -s https://rubybox.ru/hd)
 ```
