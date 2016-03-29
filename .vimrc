@@ -32,6 +32,7 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'rking/ag.vim'
+Plugin 'savonarola/vim-erlang-runtime'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
