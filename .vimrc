@@ -10,29 +10,46 @@ call vundle#begin()
 " required!
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'rosstimson/scala-vim-support'
-Plugin 'Xuyuanp/git-nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'corntrace/bufexplorer'
-Plugin 'vim-scripts/VimClojure'
-Plugin 'mattn/codepad-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'tpope/vim-rails'
-Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'terryma/vim-multiple-cursors'
+" Lang support
 
-Plugin 'savonarola/vimfiles'
+Plugin 'rosstimson/scala-vim-support'
+Plugin 'vim-scripts/VimClojure'
 Plugin 'ingydotnet/yaml-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'mileszs/ack.vim'
 Plugin 'motus/pig.vim'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
+
+" Framework support
+
+Plugin 'tpope/vim-rails'
+Plugin 'Keithbsmiley/rspec.vim'
+
+" Search helpers
+
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'savonarola/vim-erlang-runtime'
+
+" Common goodies
+
+Plugin 'corntrace/bufexplorer'
+Plugin 'Xuyuanp/git-nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
+
+" Remote services
+
+Plugin 'mattn/codepad-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
+
+" Custom configs
+
+Plugin 'savonarola/vimfiles'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
