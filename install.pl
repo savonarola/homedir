@@ -5,7 +5,7 @@ use File::Basename;
 use FindBin qw($Bin);
 use POSIX qw(strftime);
 
-my $INSTALL_ID = "backup-".strftime("%F-%H%M%S", localtime())."-".int(rand(99999999));
+my $BACKUP_ID = "backup-".strftime("%F-%H%M%S", localtime())."-".int(rand(99999999));
 
 my @INSTALL = (
   [".bash_profile", ""],
@@ -65,7 +65,7 @@ sub expand_target {
 sub backup {
     my $target = shift;
     my ($name, $path, $suffix) = fileparse($target);
-    my $backup_name = $path."/".$name.".".$INSTALL_ID.$suffix;
+    my $backup_name = $path."/".$name.".".$BACKUP_ID.$suffix;
     print "Backuping $target to $backup_name\n";
     rename $target, $backup_name;
 }
