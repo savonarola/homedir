@@ -17,9 +17,9 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}*"
 
-ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE="%{$fg[yellow]%}B%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE="%{$fg[yellow]%}A%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE="%{$fg_bold[red]%}D%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$fg[yellow]%}B%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$fg[yellow]%}A%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE=" %{$fg_bold[red]%}D%{$reset_color%} "
 
 export LANG="ru_RU.UTF-8"
 export LC_ALL="ru_RU.UTF-8"
