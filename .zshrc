@@ -1,7 +1,6 @@
-# Oh My Zsh ##############################
+# Oh My Zsh Start ##############################
 
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
@@ -9,7 +8,17 @@ plugins=(git history)
 
 source $ZSH/oh-my-zsh.sh
 
-# Oh My Zsh ##############################
+# Oh My Zsh End ################################
+
+
+
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 export LANG="ru_RU.UTF-8"
 export LC_ALL="ru_RU.UTF-8"
