@@ -5,7 +5,7 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git )
+plugins=(git history)
 
 source $ZSH/oh-my-zsh.sh
 
