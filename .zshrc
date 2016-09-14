@@ -11,15 +11,15 @@ source $ZSH/oh-my-zsh.sh
 # Oh My Zsh End ################################
 
 local ret_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
-PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} %{$fg[cyan]%}%d%{$reset_color%} $(git_prompt_info)$(git_remote_status)${ret_status} %{$reset_color%}'
+PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%} %{$fg[cyan]%}%d%{$reset_color%}$(git_prompt_info)$(git_remote_status) ${ret_status} %{$reset_color%}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[magenta]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}*"
 
-ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$fg[yellow]%}B%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$fg[yellow]%}A%{$reset_color%} "
-ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE=" %{$fg_bold[red]%}D%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$fg[yellow]%}B%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$fg[yellow]%}A%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE=" %{$fg_bold[red]%}D%{$reset_color%}"
 
 export LANG="ru_RU.UTF-8"
 export LC_ALL="ru_RU.UTF-8"
