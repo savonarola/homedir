@@ -11,11 +11,11 @@ my @INSTALL = (
   [".bash_profile", ""],
   [".bashrc", ""],
   [".gitconfig", ""],
-  [".oh-my-zsh", ""],
+  [".oh-my-zsh/", ""],
   [".screenrc", ""],
   [".tmux.conf", ""],
-  [".tools", ""],
-  [".vim", ""],
+  [".tools/", ""],
+  [".vim/", ""],
   [".vimrc", ""],
   [".zshrc", ""],
 );
@@ -80,7 +80,7 @@ sub touch {
 
 sub copy {
     my ($src, $target) = @_;
-    system cp => '-rf', $src, $target;
+    system rsync => '-a', $src, $target;
 }
 
 install();
