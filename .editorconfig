@@ -1,0 +1,33 @@
+# EditorConfig is awesome: http://EditorConfig.org
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+
+[**.{ru,rb,json_builder}]
+indent_style = space
+indent_size = 2
+
+[**.{haml}]
+indent_style = space
+indent_size = 2
+
+[**.{erl,hrl,app.src,config}]
+indent_style = space
+indent_size = 2
+
+[**.{js,scss,coffee}]
+indent_style = tab
+
+[**.{yaml,yml}]
+indent_style = space
+indent_size = 2
+
+[**.{ex,exs}]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab

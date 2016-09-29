@@ -20,6 +20,8 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
 
+Plugin 'editorconfig/editorconfig-vim'
+
 " Framework support
 
 Plugin 'tpope/vim-rails'
@@ -57,4 +59,3 @@ filetype plugin indent on    " required
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
-

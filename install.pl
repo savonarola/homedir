@@ -10,6 +10,7 @@ my $BACKUP_ID = "backup-".strftime("%F-%H%M%S", localtime())."-".int(rand(999999
 my @INSTALL = (
   [".bash_profile", ""],
   [".bashrc", ""],
+  [".editorconfig", ""],
   [".gitconfig", ""],
   [".oh-my-zsh/", ""],
   [".screenrc", ""],
