@@ -40,18 +40,8 @@ then
   epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
   if [ $epoch_diff -gt $epoch_target ]
   then
-    if [ "$DISABLE_UPDATE_PROMPT" = "true" ]
-    then
-      _upgrade_zsh
-    else
-      echo "[Oh My Zsh] Would you like to check for updates? [Y/n]: \c"
-      read line
-      if [[ "$line" == Y* ]] || [[ "$line" == y* ]] || [ -z "$line" ]; then
-        _upgrade_zsh
-      else
-        _update_zsh_update
-      fi
-    fi
+    # No updates we need :)
+    _update_zsh_update
   fi
 else
   # create the zsh file
