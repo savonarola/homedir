@@ -1,3 +1,6 @@
+[core]
+    excludesfile = ~/.gitignore
+
 [color]
     diff = auto
     status = auto
@@ -6,7 +9,7 @@
 [diff]
 	renamelimit = 0
 [merge]
-  summary = true
+    summary = true
 [alias]
     st = status
     ci = commit
