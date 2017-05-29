@@ -40,7 +40,6 @@ Plugin 'Xuyuanp/git-nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdcommenter'
 
 " Remote services
 
@@ -51,6 +50,10 @@ Plugin 'mattn/gist-vim'
 " Custom configs
 
 Plugin 'savonarola/vimfiles'
+
+" Other common goodies
+
+Plugin 'scrooloose/nerdcommenter'
 
 
 call vundle#end()            " required
