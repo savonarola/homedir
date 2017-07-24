@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'elixir-lang/vim-elixir'
 "Plugin 'lambdatoast/elm.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'digitaltoad/vim-pug'
 
 Plugin 'editorconfig/editorconfig-vim'
 
