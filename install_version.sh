@@ -19,7 +19,7 @@ pushd $tmprepo;
 wget "https://github.com/savonarola/homedir/archive/v$version.tar.gz"
 tar xf "v$version.tar.gz"
 cd "homedir-$version"
-perl homedir/install.pl
+perl ./install.pl
 popd
 rm -Rf $tmprepo
 
