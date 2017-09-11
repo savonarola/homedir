@@ -16,9 +16,9 @@ fi
 
 mkdir $tmprepo;
 pushd $tmprepo;
-wget "https://github.com/savonarola/homedir/archive/v$HOMEDIR_VERSION.tar.gz"
-tar xf "v$HOMEDIR_VERSION.tar.gz"
-cd "homedir-$HOMEDIR_VERSION"
+wget "https://github.com/savonarola/homedir/archive/v$version.tar.gz"
+tar xf "v$version.tar.gz"
+cd "homedir-$version"
 perl homedir/install.pl
 popd
 rm -Rf $tmprepo
