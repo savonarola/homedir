@@ -4,7 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git history)
+plugins=(git history k)
 
 source $ZSH/oh-my-zsh.sh
 
