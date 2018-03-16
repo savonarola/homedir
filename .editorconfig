@@ -10,6 +10,10 @@ charset = utf-8
 indent_style = space
 indent_size = 2
 
+[**.{pm,pl}]
+indent_style = space
+indent_size = 4
+
 [**.{haml,slim}]
 indent_style = space
 indent_size = 2
