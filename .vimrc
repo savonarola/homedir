@@ -17,7 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 "Plugin 'motus/pig.vim'
 Plugin 'elixir-lang/vim-elixir'
 "Plugin 'lambdatoast/elm.vim'
-Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'chr4/nginx.vim'
 Plugin 'digitaltoad/vim-pug'
 
 Plugin 'editorconfig/editorconfig-vim'
