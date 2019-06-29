@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 version=$1
 
 if [ "x$version" == "x" ]
 then
-  echo "version required"
+  echo "Usage: $0 VERSION"
   exit 1
 fi
 
@@ -14,12 +14,12 @@ then
     rm -rf $tmprepo
 fi
 
-mkdir $tmprepo;
-pushd $tmprepo;
+mkdir $tmprepo
+pushd $tmprepo || exit 1
 wget "https://github.com/savonarola/homedir/archive/v$version.tar.gz"
 tar xf "v$version.tar.gz"
-cd "homedir-$version"
+cd "homedir-$version" || exit 1
 perl ./install.pl
-popd
+popd || exit 1
 rm -Rf $tmprepo
 
