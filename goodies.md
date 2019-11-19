@@ -1,37 +1,18 @@
 ## Misc goodies
 
-# `bat`
+* `bb` — System monitor
+* `bat` — `cat` with syntax highlighting
+* `exa` — Replacement for `ls`
+* `eva` — Calculator
+* `fd` — Awesome `find`
+* `fzf` — Fuzzy search
+* `hexyl` — Hex viewer
+* `mdcat` — Render Markdown in the terminal
+* `prettyping` — Pretty `ping` (`alias ping='prettyping --nolegend`)
 
-Beautiful `cat`.
-
-```
-cargo intall bat
-```
-
-# `prettyping`
-
-```
-dnf install prettyping
-```
+## Install
 
 ```
-alias ping='prettyping --nolegend'
+dnf install fd-find fzf prettyping
+cargo install bb bat exa eva hexyl mdcat
 ```
-
-# `fd`
-
-
-Awesome `find`.
-
-```
-dnf install fd-find
-```
-
-# `fzf`
-
-Fuzzy search.
-
-```
-dnf install fzf
-```
-
