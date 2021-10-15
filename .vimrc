@@ -32,6 +32,8 @@ Plugin 'rking/ag.vim'
 Plugin 'corntrace/bufexplorer'
 Plugin 'Xuyuanp/git-nerdtree'
 Plugin 'bling/vim-airline'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 " Custom configs
 
