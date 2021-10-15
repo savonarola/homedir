@@ -19,6 +19,7 @@ Plugin 'elixir-lang/vim-elixir'
 "Plugin 'lambdatoast/elm.vim'
 Plugin 'chr4/nginx.vim'
 Plugin 'digitaltoad/vim-pug'
+Plugin 'vim-erlang/vim-erlang-runtime'
 
 Plugin 'editorconfig/editorconfig-vim'
 
