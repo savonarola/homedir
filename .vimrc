@@ -34,6 +34,8 @@ Plugin 'Xuyuanp/git-nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-syntastic/syntastic'
 
 " Custom configs
 
