@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use File::Basename;
+use File::Path qw(make_path);
 use FindBin qw($Bin);
 use POSIX qw(strftime);
 
@@ -18,6 +19,7 @@ my @INSTALL = (
   [".tools/", ""],
   [".vim/", ""],
   [".vimrc", ""],
+  [".vimrc", ".config/nvim/init.vim"],
   [".zshrc", ""],
 );
 
@@ -81,6 +83,8 @@ sub touch {
 
 sub copy {
     my ($src, $target) = @_;
+    my ($name, $path, $suffix) = fileparse($target);
+    make_path($path, {verbose => 1});
     system rsync => '-a', $src, $target;
 }
 
