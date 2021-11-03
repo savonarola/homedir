@@ -19,7 +19,7 @@ my @INSTALL = (
   [".tools/", ""],
   [".vim/", ""],
   [".vimrc", ""],
-  [".vimrc", ".config/nvim/init.vim"],
+  ["nvim/", ".config/nvim/"],
   [".zshrc", ""],
 );
 
