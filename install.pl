@@ -9,25 +9,25 @@ use POSIX qw(strftime);
 my $BACKUP_ID = "backup-".strftime("%F-%H%M%S", localtime())."-".int(rand(99999999));
 
 my @INSTALL = (
-  [".bash_profile", ""],
-  [".bashrc", ""],
-  [".editorconfig", ""],
-  [".gitconfig", ""],
-  [".oh-my-zsh/", ""],
-  [".screenrc", ""],
-  [".tmux.conf", ""],
-  [".tools/", ""],
-  [".vim/", ""],
-  [".vimrc", ""],
-  ["nvim/", ".config/nvim/"],
-  [".zshrc", ""],
+    [".bash_profile", ""],
+    [".bashrc", ""],
+    [".editorconfig", ""],
+    [".gitconfig", ""],
+    [".oh-my-zsh/", ""],
+    [".screenrc", ""],
+    [".tmux.conf", ""],
+    [".tools/", ""],
+    [".vim/", ""],
+    [".vimrc", ""],
+    ["nvim/", ".config/nvim/"],
+    [".zshrc", ""],
 );
 
 my @LOCALS = qw(
-  .bashrc.local
-  .gitconfig.local
-  .vimrc.local
-  .zshrc.local
+.bashrc.local
+.gitconfig.local
+.vimrc.local
+.zshrc.local
 );
 
 sub install {
