@@ -115,7 +115,7 @@ vim.cmd [[
 	set number
   colorscheme vscode
 
-  set clipboard+=unnamedplus
+  " set clipboard+=unnamedplus
 
   nmap <c-c> "+y
   vmap <c-c> "+y
@@ -123,6 +123,9 @@ vim.cmd [[
   inoremap <c-v> <c-r>+
   cnoremap <c-v> <c-r>+
   inoremap <c-r> <c-v>
+
+  vmap > >gv
+  vmap < <gv
 ]]
 
 --------------------------------------------------------------------------------
