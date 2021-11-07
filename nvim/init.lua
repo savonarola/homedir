@@ -23,6 +23,11 @@ require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
 
+  use 'jlanzarotta/bufexplorer'
+
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
+
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
   use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', }
@@ -72,14 +77,30 @@ vim.api.nvim_set_keymap("x", "<leader>cc", "<Plug>kommentary_visual_increase", {
 vim.api.nvim_set_keymap("x", "<leader>cu", "<Plug>kommentary_visual_decrease", {})
 
 --------------------------------------------------------------------------------
+-- Bufexplorer
+--------------------------------------------------------------------------------
+
+vim.cmd [[
+  nnoremap <leader>b <cmd>BufExplorer<cr>
+]]
+
+--------------------------------------------------------------------------------
+-- FZF
+--------------------------------------------------------------------------------
+
+vim.cmd [[
+  nnoremap <leader>p <cmd>FZF<cr>
+]]
+
+--------------------------------------------------------------------------------
 -- Telescope
 --------------------------------------------------------------------------------
 
 require("telescope").setup()
 vim.cmd [[
-  nnoremap <leader>p <cmd>Telescope find_files<cr>
+  nnoremap <leader>fp <cmd>Telescope find_files<cr>
   nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-  nnoremap <leader>b <cmd>Telescope buffers<cr>
+  nnoremap <leader>fb <cmd>Telescope buffers<cr>
   nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 ]]
 
@@ -119,7 +140,6 @@ vim.cmd [[
 
   nmap <c-c> "+y
   vmap <c-c> "+y
-  nmap <c-v> "+p
   inoremap <c-v> <c-r>+
   cnoremap <c-v> <c-r>+
   inoremap <c-r> <c-v>
