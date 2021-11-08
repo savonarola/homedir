@@ -23,8 +23,6 @@ require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} }
   }
 
-  use 'jlanzarotta/bufexplorer'
-
   use 'junegunn/fzf'
   use 'junegunn/fzf.vim'
 
@@ -77,19 +75,12 @@ vim.api.nvim_set_keymap("x", "<leader>cc", "<Plug>kommentary_visual_increase", {
 vim.api.nvim_set_keymap("x", "<leader>cu", "<Plug>kommentary_visual_decrease", {})
 
 --------------------------------------------------------------------------------
--- Bufexplorer
---------------------------------------------------------------------------------
-
-vim.cmd [[
-  nnoremap <leader>b <cmd>BufExplorer<cr>
-]]
-
---------------------------------------------------------------------------------
 -- FZF
 --------------------------------------------------------------------------------
 
 vim.cmd [[
   nnoremap <leader>p <cmd>FZF<cr>
+  nnoremap <leader>b <cmd>Buffers<cr>
 ]]
 
 --------------------------------------------------------------------------------
