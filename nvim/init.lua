@@ -144,6 +144,8 @@ vim.cmd [[
   cnoremap <c-v> <c-r>+
   inoremap <c-r> <c-v>
 
+  map Q <Nop>
+
   vmap > >gv
   vmap < <gv
 ]]
