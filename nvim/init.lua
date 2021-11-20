@@ -32,6 +32,11 @@ require('packer').startup(function()
 
   use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
 
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+
   use 'b3nj5m1n/kommentary'
 
   use 'sbdchd/neoformat'
@@ -47,6 +52,21 @@ require('packer').startup(function()
     require('packer').sync()
   end
 end)
+
+--------------------------------------------------------------------------------
+-- TreeSitter
+--------------------------------------------------------------------------------
+
+require('nvim-treesitter.configs').setup {
+  ensure_installed = { "erlang" },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false
+  },
+  indent = {
+    enable = true
+  }
+}
 
 --------------------------------------------------------------------------------
 -- LSP
@@ -81,7 +101,9 @@ vim.api.nvim_set_keymap("x", "<leader>cu", "<Plug>kommentary_visual_decrease", {
 vim.cmd [[
   nnoremap <leader>p <cmd>FZF<cr>
   nnoremap <leader>b <cmd>Buffers<cr>
+  let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
 ]]
+
 
 --------------------------------------------------------------------------------
 -- Telescope
@@ -139,6 +161,9 @@ vim.cmd [[
 
   vmap > >gv
   vmap < <gv
+
+  set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --smart-case
+  set grepformat=%f:%l:%c:%m
 ]]
 
 --------------------------------------------------------------------------------
