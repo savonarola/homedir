@@ -86,6 +86,8 @@ require('packer').startup(function()
     end
   }
 
+  use { 'tpope/vim-fugitive' }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},

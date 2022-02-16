@@ -33,19 +33,12 @@ export LESS="-MQR"
 umask 2
 
 alias v="vim"
-alias :e="vim"
-alias gv="gvim"
 alias g='grep --color=auto'
 alias irb='irb --readline -r irb/completion'
 alias ll='ls -la --color=yes'
 
-alias dp="vsn patch bundle exec cap production release:deploy"
-alias dmn="vsn minor bundle exec cap production release:deploy"
-alias dmd="vsn middle bundle exec cap production release:deploy"
-alias dmj="vsn major bundle exec cap production release:deploy"
-
-alias f="sudo -u fbdeploy"
-alias fs="f sudo -u service"
+alias gh-pr-me='gh pr list --search "is:open is:pr review-requested:@me" --web'
+alias gh-pr-my='gh pr list --author "@me" --web'
 
 LOCAL="$HOME/.zshrc.local"
 
