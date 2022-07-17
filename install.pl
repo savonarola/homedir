@@ -93,6 +93,7 @@ sub touch {
 sub copy {
     my ($src, $target) = @_;
     command(rsync => '-a', $src, $target);
+    command(chmod => '-R', 'g-w', $target);
 }
 
 sub git_clone {

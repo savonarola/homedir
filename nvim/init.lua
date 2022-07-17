@@ -36,7 +36,7 @@ require('packer').startup(function()
       if fn.empty(fn.glob(deps_path)) > 0 then
         vim.cmd [[COQdeps]]
       end
-      
+
       vim.cmd [[COQnow -s]]
     end
   }
@@ -60,6 +60,7 @@ require('packer').startup(function()
     'junegunn/fzf.vim',
     config = function()
       vim.cmd [[
+        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git"'
         nnoremap <leader>p <cmd>FZF<cr>
         nnoremap <leader>b <cmd>Buffers<cr>
       ]]
@@ -72,6 +73,13 @@ require('packer').startup(function()
       vim.cmd [[
         nnoremap <leader>g <cmd>FzfLua live_grep<cr>
       ]]
+
+      local actions = require("fzf-lua.actions")
+      require('fzf-lua').setup({
+        grep = {
+          rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden --follow -g \"!.git\" "
+        }
+      })
     end
   }
 
