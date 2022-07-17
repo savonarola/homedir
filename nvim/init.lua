@@ -48,7 +48,7 @@ require('packer').startup(function()
       require("telescope").setup()
       vim.cmd [[
         nnoremap <leader>fp <cmd>Telescope find_files<cr>
-        nnoremap <leader>g <cmd>Telescope live_grep<cr>
+        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
         nnoremap <leader>fb <cmd>Telescope buffers<cr>
         nnoremap <leader>fh <cmd>Telescope help_tags<cr>
       ]]
@@ -62,7 +62,15 @@ require('packer').startup(function()
       vim.cmd [[
         nnoremap <leader>p <cmd>FZF<cr>
         nnoremap <leader>b <cmd>Buffers<cr>
-        let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+      ]]
+    end
+  }
+
+  use {
+    'ibhagwan/fzf-lua',
+    config = function()
+      vim.cmd [[
+        nnoremap <leader>g <cmd>FzfLua live_grep<cr>
       ]]
     end
   }
