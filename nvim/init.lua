@@ -60,7 +60,7 @@ require('packer').startup(function()
     'junegunn/fzf.vim',
     config = function()
       vim.cmd [[
-        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow -g "!.git"'
+        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git"'
         nnoremap <leader>p <cmd>FZF<cr>
         nnoremap <leader>b <cmd>Buffers<cr>
       ]]
@@ -77,7 +77,7 @@ require('packer').startup(function()
       local actions = require("fzf-lua.actions")
       require('fzf-lua').setup({
         grep = {
-          rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden --follow -g \"!.git\" "
+          rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden -g \"!.git\" "
         }
       })
     end
