@@ -23,6 +23,8 @@ require('packer').startup(function()
     end
   }
 
+  use { 'github/copilot.vim', branch = 'release' }
+
   use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
   use { 'ms-jpq/coq.thirdparty', branch = '3p' }
   use {
