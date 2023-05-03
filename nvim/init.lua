@@ -24,15 +24,7 @@ require('packer').startup(function()
   }
 
   use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
-  use {
-    'ms-jpq/coq.thirdparty',
-    branch = '3p',
-    config = function()
-      require("coq_3p") {
-        { src = "copilot", short_name = "COP", accept_key = "<c-f>" }
-      }
-    end
-  }
+  use { 'ms-jpq/coq.thirdparty', branch = '3p' }
   use {
     'ms-jpq/coq_nvim',
     branch = 'coq',
