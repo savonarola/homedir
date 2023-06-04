@@ -25,24 +25,6 @@ require('packer').startup(function()
 
   use { 'github/copilot.vim', branch = 'release' }
 
-  use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
-  use { 'ms-jpq/coq.thirdparty', branch = '3p' }
-  use {
-    'ms-jpq/coq_nvim',
-    branch = 'coq',
-    config = function()
-      require("coq")
-
-      local fn = vim.fn
-      local deps_path = fn.stdpath('data')..'/site/pack/packer/start/coq_nvim/.vars/runtime/requirements.lock'
-      if fn.empty(fn.glob(deps_path)) > 0 then
-        vim.cmd [[COQdeps]]
-      end
-
-      vim.cmd [[COQnow -s]]
-    end
-  }
-
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} },
