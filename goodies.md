@@ -11,10 +11,5 @@
 * `prettyping` — Pretty `ping` (`alias ping='prettyping --nolegend`)
 * `jq` — JSON swiss knife
 * `miller` — awk/grep/cut boilerplate 
+* `fq` — jq for binary files
 
-## Install
-
-```
-dnf install fd-find fzf prettyping
-cargo install bb bat exa eva hexyl mdcat
-```
