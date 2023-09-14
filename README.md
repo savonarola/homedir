@@ -7,9 +7,9 @@ Collection of my dofiles.
 Run
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/savonarola/homedir/master/install.sh)
+$ git clone https://github.com/savonarola/homedir.git
+$ cd homedir
+$ ./install.pl
 ```
-or
-```bash
-bash <(curl -s https://raw.githubusercontent.com/savonarola/homedir/master/install_version.sh) 0.0.2
-```
+
+Conflicting files will be backed up to `$HOME/.homedir_backup`.
