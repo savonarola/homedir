@@ -5,9 +5,9 @@ vim.cmd [[packadd packer.nvim]]
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  use { 'neovim/nvim-lspconfig' }
+  -- use { 'neovim/nvim-lspconfig' }
 
-  use {
+  --[[ use {
     'williamboman/nvim-lsp-installer',
     config = function()
       local lsp_installer = require("nvim-lsp-installer")
@@ -21,9 +21,11 @@ require('packer').startup(function()
         server:setup(opts)
       end)
     end
-  }
+  } ]]
 
-  use { 'github/copilot.vim', branch = 'release' }
+  -- use { 'github/copilot.vim', branch = 'release' }
+
+  use {'neoclide/coc.nvim', branch = 'release'}
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -134,15 +136,8 @@ require('packer').startup(function()
       vim.cmd [[colorscheme vscode]]
     end
   }
-  
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require("indent_blankline").setup {
-          buftype_exclude = {"terminal", "nofile"}
-      }
-    end
-  }
+
+  use "lukas-reineke/indent-blankline.nvim"
 
 end)
 
