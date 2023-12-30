@@ -20,10 +20,11 @@ my @INSTALL = (
     [".tools/", ""],
     [".vim/", ""],
     [".vimrc", ""],
-    ["nvim/", ".config/nvim/"],
     [".zshrc", ""],
 
-    [{git => "https://github.com/wbthomason/packer.nvim"}, ".local/share/nvim/site/pack/packer/start/packer.nvim"]
+    [{git => "https://github.com/LazyVim/starter"}, ".config/nvim"],
+    ["nvim/lua/plugins/lsp.lua", ".config/nvim/lua/plugins/lsp.lua"],
+    ["nvim/lua/config/options.lua", ".config/nvim/lua/config/options.lua"],
 );
 
 my @LOCALS = qw(
@@ -76,7 +77,7 @@ sub install_git {
     my $target = prepare_target($rel_target);
 
     print "[git] cloning $git_url to $target\n";
-    git_clone($git_url, $target, $ref || 'master');
+    git_clone($git_url, $target, $ref || 'main');
 }
 
 sub expand_src {
@@ -98,6 +99,7 @@ sub copy {
 
 sub git_clone {
     my ($git_url, $target, $ref) = @_;
+    command(rm => '-rf', $target);
     command(git => 'clone', '--depth=1', '-b', $ref, $git_url, $target);
 }
 
