@@ -142,6 +142,8 @@ require('packer').startup(function()
     end
   }
 
+  use { 'jabirali/vim-tmux-yank' }
+
 end)
 
 vim.cmd [[
