@@ -1,6 +1,8 @@
 [core]
     excludesfile = ~/.gitignore
-
+    editor = nvim
+[init]
+	defaultBranch = main
 [color]
     diff = auto
     status = auto
@@ -17,15 +19,14 @@
     co = checkout
     df = diff
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-[gitflow "branch"]
-    master = master
-    develop = develop
-[gitflow "prefix"]
-    feature = feature-
-    release = release-
-    hotfix = hotfix-
-    support = support-
-    versiontag =
+    dd = -c diff.external=difft diff
+    dl = -c diff.external=difft log --ext-diff
+    dlp = -c diff.external=difft log -p --ext-diff
+    ds = -c diff.external=difft show --ext-diff
+    df = -c diff.external=difft diff
 [include]
     path = .gitconfig.local
-
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential

@@ -99,7 +99,7 @@ require('packer').startup(function()
     end
   }
 
-  use { 
+  use {
     'b3nj5m1n/kommentary',
     config = function()
       vim.api.nvim_set_keymap("n", "<leader>cc", "<Plug>kommentary_line_increase", {})
@@ -116,7 +116,7 @@ require('packer').startup(function()
       vim.g.neoformat_enabled_erlang = { "erlfmt" }
     end
   }
-    
+
   use {
     "Pocco81/auto-save.nvim",
     config = function()
@@ -134,7 +134,7 @@ require('packer').startup(function()
       vim.cmd [[colorscheme vscode]]
     end
   }
-  
+
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
