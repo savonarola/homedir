@@ -2,14 +2,14 @@
     excludesfile = ~/.gitignore
     editor = nvim
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [color]
     diff = auto
     status = auto
     branch = auto
     interactive = auto
 [diff]
-	renamelimit = 0
+    renamelimit = 0
 [merge]
     summary = true
 [alias]
@@ -27,6 +27,6 @@
 [include]
     path = .gitconfig.local
 [credential "https://github.com"]
-	helper = !/usr/bin/gh auth git-credential
+    helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = !/usr/bin/gh auth git-credential
+    helper = !/usr/bin/gh auth git-credential
