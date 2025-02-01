@@ -17,3 +17,4 @@
 * `litecli` — CLI for SQLite
 * `zoxide` — `cd` replacement
 * `lazygit` — Git client
+* `zellij` — `tmux` for humans
