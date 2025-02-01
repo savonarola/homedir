@@ -1,6 +1,5 @@
 ## Misc goodies
 
-* `bb` — System monitor
 * `btop` — System monitor
 * `bat` — `cat` with syntax highlighting
 * `exa` — Replacement for `ls`
