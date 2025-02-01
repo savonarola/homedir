@@ -157,7 +157,9 @@ vim.cmd [[
 
 	set number
 
-  " set clipboard+=unnamedplus
+  if has("unnamedplus")
+    set clipboard=unnamedplus
+  endif
 
   nmap <c-c> "+y
   vmap <c-c> "+y

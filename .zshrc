@@ -10,6 +10,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Oh My Zsh End ################################
 
+# System configuration
+
+ulimit -n 20480
+
+# Prompt
+
 local ret_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
 PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)$(git_remote_status) ${ret_status}%{$reset_color%}'
 
@@ -21,24 +27,190 @@ ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$fg[yellow]%}B%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$fg[yellow]%}A%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE=" %{$fg_bold[red]%}D%{$reset_color%}"
 
-export LANG="ru_RU.UTF-8"
-export LC_ALL="ru_RU.UTF-8"
+# Path
 
 export PATH="$PATH:$HOME/.tools"
-export EDITOR=vim
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.fzf/bin:$PATH"
 
+# Program setup
+
+## Homebrew
+
+BREW_PATH="/opt/homebrew/bin/brew"
+if [ -f "$BREW_PATH" ]; then
+    eval "$($BREW_PATH shellenv)"
+    export HOMEBREW_NO_ENV_HINTS=1
+fi
+
+## Shell tools
+
+export EDITOR=vim
 export PAGER=less
 export LESS="-MQR"
 
-umask 2
+## Erlang
+
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+## Typst
+
+[ -d "$HOME/Library/Fonts" ] && export TYPST_FONT_PATHS="$HOME/Library/Fonts"
+
+## fdfind
+
+if command -v fd >/dev/null; then
+    FD_COMMAND="fd"
+    alias fdi="fd -I"
+elif command -v fdfind >/dev/null; then
+    FD_COMMAND="fdfind"
+    alias fd="fdfind"
+    alias fdi="fdfind -I"
+else
+    FD_COMMAND=""
+fi
+
+## FZF
+if [ -f "$HOME/.fzf.zsh" ]; then
+    if [ -n "$FD_COMMAND" ]; then
+        export FZF_DEFAULT_COMMAND="$FD_COMMAND --type file"
+        export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    fi
+    source "$HOME/.fzf.zsh"
+fi
+
+## ASDF
+
+ASDF_SH="$HOME/.asdf/asdf.sh"
+ASDF_BREW_SH="/opt/homebrew/opt/asdf/libexec/asdf.sh"
+[ -f "$ASDF_SH" ] && source "$ASDF_SH"
+[ -f "$ASDF_BREW_SH" ] && source "$ASDF_BREW_SH"
+
+## Cargo
+
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+## Anaconda
+
+ANACONDA_BREW_SH="/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+[ -f "$ANACONDA_BREW_SH" ] && source "$ANACONDA_BREW_SH"
+
+## GCloud
+
+GCLOUD_SDK_PATH="$HOME/google-cloud-sdk"
+
+if [ -f "$GCLOUD_SDK_PATH/path.zsh.inc" ]; then source "$GCLOUD_SDK_PATH/path.zsh.inc"; fi
+if [ -f "$GCLOUD_SDK_PATH/completion.zsh.inc" ]; then source "$GCLOUD_SDK_PATH/completion.zsh.inc"; fi
+
+# Non-invasive aliases
 
 alias v="vim"
 alias g='grep --color=auto'
-alias irb='irb --readline -r irb/completion'
-alias ll='ls -la --color=yes'
 
-alias gh-pr-me='gh pr list --search "is:open is:pr review-requested:@me" --web'
-alias gh-pr-my='gh pr list --author "@me" --web'
+# Aliases that should be created only if commands exist
+
+command -v rg >/dev/null && alias rgi="rg --no-ignore"
+command -v lazygit >/dev/null && alias lg=lazygit
+command -v bat >/dev/null && alias bat="$HOME/.cargo/bin/bat --style plain --paging never --theme 'Visual Studio Dark+'"
+command -v exa >/dev/null && alias ll="exa --long --git --all"
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)" && alias cd=z
+command -v nvim >/dev/null && alias v="nvim"
+command -v prettyping >/dev/null && alias ping='prettyping --nolegend'
+
+command -v kubectl >/dev/null && alias k=kubectl
+command -v kubeoff >/dev/null && alias koff=kubeoff
+command -v kubeon >/dev/null && alias kon=kubeon
+command -v kubectx >/dev/null && alias kc=kubectx
+command -v kubens >/dev/null && alias kn=kubens
+
+# Helpers
+
+function vscode-kill {
+    ps aux | egrep '(.cursor-server|.vscode-server|erlang_ls)' | awk '{print $2}' | xargs kill
+}
+
+function wip {
+    git add .
+    git ci -m wip --no-verify
+}
+
+unalias gg 2>/dev/null
+
+function gg {
+    pattern="$1"
+    git ls-files -m -o --exclude-standard | xargs rg --vimgrep "$pattern"
+}
+
+function dsh {
+    if [ $# -eq 0 ]; then
+        if command -v fzf >/dev/null; then
+            container=$(docker ps --format '{{.Names}} ({{.Image}})' | fzf --height 40% --reverse | cut -d' ' -f1)
+            [ -n "$container" ] && docker exec -it "$container" bash
+        else
+            echo "Usage: dsh <container_name_or_id>"
+            return 1
+        fi
+    else
+        docker exec -it "$1" bash
+    fi
+}
+
+function _kube_select_pod {
+    if command -v fzf >/dev/null; then
+        pod=$(kubectl get pods --no-headers | fzf --height 40% --reverse | awk '{print $1}')
+        echo "$pod"
+    else
+        return 1
+    fi
+}
+
+function ksh {
+    if [ $# -eq 0 ]; then
+        pod=$(_kube_select_pod)
+        if [ -n "$pod" ]; then
+            kubectl exec -it "$pod" -- /bin/bash
+        else
+            echo "Usage: ksh <pod_name>"
+            return 1
+        fi
+    else
+        kubectl exec -it "$1" -- /bin/bash
+    fi
+}
+
+function kdesc {
+    if [ $# -eq 0 ]; then
+        pod=$(_kube_select_pod)
+        if [ -n "$pod" ]; then
+            kubectl describe pod "$pod"
+        else
+            echo "Usage: kdesc <pod_name>"
+            return 1
+        fi
+    else
+        kubectl describe pod "$1"
+    fi
+}
+
+function klogs {
+    if [ $# -eq 0 ]; then
+        pod=$(_kube_select_pod)
+        if [ -n "$pod" ]; then
+            kubectl logs "$pod"
+        else
+            echo "Usage: klogs <pod_name>"
+            return 1
+        fi
+    else
+        kubectl logs "$1"
+    fi
+}
+
+# Local configuration
 
 LOCAL="$HOME/.zshrc.local"
 
