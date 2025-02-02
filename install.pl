@@ -23,6 +23,7 @@ my @INSTALL = (
     ["nvim/", ".config/nvim/"],
     [".zshrc", ""],
     [".ssh/", ""],
+    ["zellij.kdl", ".config/zellij/config.kdl"],
 
     [{git => "https://github.com/wbthomason/packer.nvim"}, ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 );
