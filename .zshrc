@@ -37,6 +37,10 @@ export PATH="/usr/local/go/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.fzf/bin:$PATH"
 
+if [ -d /opt/nvim-linux-x86_64/bin ]; then
+    export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
+fi
+
 # Program setup
 
 ## Homebrew
