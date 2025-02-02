@@ -4,8 +4,6 @@ export ZSH=$HOME/.oh-my-zsh
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git history k)
-
 source $ZSH/oh-my-zsh.sh
 
 # Oh My Zsh End ################################
@@ -126,7 +124,6 @@ command -v lazygit >/dev/null && alias lg=lazygit
 command -v bat >/dev/null && alias bat="$HOME/.cargo/bin/bat --style plain --paging never --theme 'Visual Studio Dark+'"
 command -v exa >/dev/null && alias ll="exa --long --git --all"
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)" && alias cd=z
-command -v nvim >/dev/null && alias v="nvim"
 command -v prettyping >/dev/null && alias ping='prettyping --nolegend'
 
 command -v kubectl >/dev/null && alias k=kubectl
