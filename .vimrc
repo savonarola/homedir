@@ -12,14 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Lang support
 
-"Plugin 'rosstimson/scala-vim-support'
-"Plugin 'vim-scripts/VimClojure'
-"Plugin 'motus/pig.vim'
-Plugin 'elixir-lang/vim-elixir'
-"Plugin 'lambdatoast/elm.vim'
 Plugin 'chr4/nginx.vim'
-Plugin 'digitaltoad/vim-pug'
-Plugin 'vim-erlang/vim-erlang-runtime'
 
 Plugin 'editorconfig/editorconfig-vim'
 
