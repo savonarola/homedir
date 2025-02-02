@@ -213,13 +213,13 @@ function klogs {
 
 # SSH
 
-function zellij_refresh_ssh_sock {
-  if [ -n "$ZELLIJ" ]; then
-    export SSH_AUTH_SOCK=$(find /tmp/ssh*/ -type s -name "*agent.*" | head -1)
-  fi
+function sshfix {
+    VALID_SSH_SOCK=$(find /tmp/ssh*/ -type s -name "*agent.*" -printf '%T@ %p\n' | sort -nr | head -1 | cut -d' ' -f2)
+    LINKED_SSH_SOCK="$HOME/.ssh/agent.sock"
+    if [ -S "$VALID_SSH_SOCK" ] && { [ ! -L "$LINKED_SSH_SOCK" ] || [ ! -S "$LINKED_SSH_SOCK" ]; }; then
+        ln -sf "$VALID_SSH_SOCK" "$LINKED_SSH_SOCK"
+    fi
 }
-
-add-zsh-hook precmd zellij_refresh_ssh_sock
 
 # Local configuration
 
