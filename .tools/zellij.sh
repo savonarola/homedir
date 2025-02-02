@@ -4,8 +4,8 @@
 # awesome-mouse [Created 20s ago]
 # polite-diplodocus [Created 6s ago]
 
-sessions=$(zellij list-sessions | cut -d ' ' -f1)
-local count=$(echo "$sessions" | wc -l)
+sessions=$(zellij list-sessions | sed 's/\x1B\[[0-9;]*m//g')
+count=$(echo "$sessions" | wc -l)
 
 if [ -z "$sessions" ]; then
     # No sessions exist, start a new one
