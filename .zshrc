@@ -211,6 +211,16 @@ function klogs {
     fi
 }
 
+# SSH
+
+function zellij_refresh_ssh_sock {
+  if [ -n "$ZELLIJ" ]; then
+    export SSH_AUTH_SOCK=$(find /tmp/ssh*/ -type s -name "*agent.*" | head -1)
+  fi
+}
+
+add-zsh-hook precmd zellij_refresh_ssh_sock
+
 # Local configuration
 
 LOCAL="$HOME/.zshrc.local"
