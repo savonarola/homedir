@@ -14,7 +14,7 @@ my @INSTALL = (
     [".bashrc", ""],
     [".editorconfig", ""],
     [".gitconfig", ""],
-    [".oh-my-zsh/", ""],
+    [".zshrc.d/", ""],
     [".screenrc", ""],
     [".tmux.conf", ""],
     [".tools/", ""],

@@ -1,29 +1,21 @@
-# Oh My Zsh Start ##############################
-
-export ZSH=$HOME/.oh-my-zsh
 CASE_SENSITIVE="true"
 HIST_STAMPS="yyyy-mm-dd"
 
-source $ZSH/oh-my-zsh.sh
+# These files are a tiny part of some ancient version of https://github.com/ohmyzsh/ohmyzsh
+#
+# * Oh My Zsh is huge, I don't want to install it just for these few files
+# * These excerpts are all I need
+# * They are quite simple tweaks/functions, so there is no need to ever update them.
+#
+# So we just use them directly.
+source $HOME/.zshrc.d/history.zsh
+source $HOME/.zshrc.d/git.zsh
+source $HOME/.zshrc.d/key-bindings.zsh
 
-# Oh My Zsh End ################################
-
+source $HOME/.zshrc.d/prompt.zsh
 # System configuration
 
 ulimit -n 20480
-
-# Prompt
-
-local ret_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
-PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)$(git_remote_status) ${ret_status}%{$reset_color%}'
-
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[cyan]%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg_bold[red]%}*"
-
-ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE=" %{$fg[yellow]%}B%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE=" %{$fg[yellow]%}A%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE=" %{$fg_bold[red]%}D%{$reset_color%}"
 
 # Path
 
