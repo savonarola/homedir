@@ -18,31 +18,6 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use {
-    'williamboman/mason.nvim',
-    config = function()
-      require("mason").setup()
-    end
-  }
-
-  use {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "erlangls", "perlnavigator" }
-      }
-    end
-  }
-
-  use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require("lspconfig").setup()
-    end
-  }
-
-  use { 'github/copilot.vim', branch = 'release' }
-
-  use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} },
     config = function()
@@ -103,8 +78,6 @@ require('packer').startup(function()
     end
   }
 
-  use { 'tpope/vim-fugitive' }
-
   use {
     'nvim-lualine/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons'},
@@ -151,15 +124,6 @@ require('packer').startup(function()
       vim.cmd [[colorscheme vscode]]
     end
   }
-
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require("ibl").setup()
-    end
-  }
-
-  use { 'jabirali/vim-tmux-yank' }
 
 end)
 
