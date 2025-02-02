@@ -1,4 +1,5 @@
 autoload -U colors && colors
+setopt prompt_subst
 
 local ret_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
 PROMPT='%B%T%b %{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:%{$fg[white]%}%~%{$reset_color%}$(git_prompt_info)$(git_remote_status) ${ret_status}%{$reset_color%}'
