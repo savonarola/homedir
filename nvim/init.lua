@@ -1,25 +1,42 @@
 vim.g.mapleader = ","
 
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
+
 vim.cmd [[packadd packer.nvim]]
 
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  use { 'neovim/nvim-lspconfig' }
+  use {
+    'williamboman/mason.nvim',
+    config = function()
+      require("mason").setup()
+    end
+  }
 
   use {
-    'williamboman/nvim-lsp-installer',
+    'williamboman/mason-lspconfig.nvim',
     config = function()
-      local lsp_installer = require("nvim-lsp-installer")
+      require("mason-lspconfig").setup {
+        ensure_installed = { "lua_ls", "erlangls", "perlnavigator" }
+      }
+    end
+  }
 
-      lsp_installer.on_server_ready(function(server)
-        local opts = {}
-        if server.name == "erlangls" then
-            local lspconfig = require('lspconfig')
-            opts.root_dir = lspconfig.util.root_pattern('erlang_ls.config')
-        end
-        server:setup(opts)
-      end)
+  use {
+    'neovim/nvim-lspconfig',
+    config = function()
+      require("lspconfig").setup()
     end
   }
 

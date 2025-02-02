@@ -49,7 +49,14 @@ fi
 
 ## Shell tools
 
-export EDITOR=vim
+if command -v nvim >/dev/null; then
+    export EDITOR=nvim
+    alias v="nvim"
+else
+    export EDITOR=vi
+    alias v="vi"
+fi
+
 export PAGER=less
 export LESS="-MQR"
 
@@ -106,12 +113,9 @@ GCLOUD_SDK_PATH="$HOME/google-cloud-sdk"
 if [ -f "$GCLOUD_SDK_PATH/path.zsh.inc" ]; then source "$GCLOUD_SDK_PATH/path.zsh.inc"; fi
 if [ -f "$GCLOUD_SDK_PATH/completion.zsh.inc" ]; then source "$GCLOUD_SDK_PATH/completion.zsh.inc"; fi
 
-# Non-invasive aliases
+# Aliases
 
-alias v="vim"
 alias g='grep --color=auto'
-
-# Aliases that should be created only if commands exist
 
 command -v rg >/dev/null && alias rgi="rg --no-ignore"
 command -v lazygit >/dev/null && alias lg=lazygit
@@ -218,3 +222,4 @@ if [[ -f $LOCAL ]];
 then
     source $LOCAL
 fi
+
