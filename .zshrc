@@ -64,7 +64,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 ## Typst
 
-[ -d "$HOME/Library/Fonts" ] && export TYPST_FONT_PATHS="$HOME/Library/Fonts"
+[ -d "$HOME/Library/Fonts" ] && command -v typst >/dev/null && export TYPST_FONT_PATHS="$HOME/Library/Fonts"
 
 ## fdfind
 
