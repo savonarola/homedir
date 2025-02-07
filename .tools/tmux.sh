@@ -4,7 +4,8 @@
 # dev: 1 windows (created Thu Mar 21 10:00:00 2024)
 # work: 2 windows (created Thu Mar 21 09:00:00 2024)
 
-sessions=$(tmux list-sessions 2>/dev/null | cut -d ':' -f1)
+full_sessions=$(tmux list-sessions 2>/dev/null)
+sessions=$(echo "$full_sessions" | cut -d ':' -f1)
 count=$(echo "$sessions" | wc -l)
 
 if [ -z "$sessions" ]; then
@@ -17,15 +18,16 @@ elif [ "$count" -eq 1 ]; then
 else
     # Multiple sessions, let user select with fzf
     if command -v fzf >/dev/null; then
-        session=$(echo "$sessions" | fzf --height 40% --reverse)
+        full_session=$(echo "$full_sessions" | fzf --height 40% --reverse)
 
-        if [ -n "$session" ]; then
+        if [ -n "$full_session" ]; then
+            session=$(echo "$full_session" | cut -d ':' -f1)
             exec tmux -CC attach-session -t "$session"
         fi
     else
         echo "Multiple sessions exist. Use 'tmux -CC attach-session -t <session>'"
         echo "Available sessions:"
-        echo "$sessions"
+        echo "$full_sessions"
         return 1
     fi
 fi
