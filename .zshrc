@@ -11,6 +11,7 @@ HIST_STAMPS="yyyy-mm-dd"
 source $HOME/.zshrc.d/history.zsh
 source $HOME/.zshrc.d/git.zsh
 source $HOME/.zshrc.d/key-bindings.zsh
+source $HOME/.zshrc.d/completion.zsh
 
 source $HOME/.zshrc.d/prompt.zsh
 # System configuration
@@ -114,6 +115,7 @@ if [ -f "$GCLOUD_SDK_PATH/completion.zsh.inc" ]; then source "$GCLOUD_SDK_PATH/c
 # Aliases
 
 alias g='grep --color=auto'
+alias h='history'
 
 command -v rg >/dev/null && alias rgi="rg --no-ignore"
 command -v lazygit >/dev/null && alias lg=lazygit
