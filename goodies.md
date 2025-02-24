@@ -17,3 +17,5 @@
 * `zoxide` — `cd` replacement
 * `lazygit` — Git client
 * `zellij` — `tmux` for humans
+* `superfile` — terminal file manager
+
