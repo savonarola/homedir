@@ -71,11 +71,11 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 
 if command -v fd >/dev/null; then
     FD_COMMAND="fd"
-    alias fdi="fd -I"
+    alias fdi="fd -I -H"
 elif command -v fdfind >/dev/null; then
     FD_COMMAND="fdfind"
     alias fd="fdfind"
-    alias fdi="fdfind -I"
+    alias fdi="fdfind -I -H"
 else
     FD_COMMAND=""
 fi
