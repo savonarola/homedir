@@ -19,3 +19,8 @@
 * `zellij` — `tmux` for humans
 * `superfile` — terminal file manager
 
+## Fonts
+
+* [CMU Fonts](https://www.fontsquirrel.com/fonts/computer-modern)
+* [DejaVu Nerd Fonts](https://www.nerdfonts.com/font-downloads), also install via `brew install --cask font-dejavu-sans-mono-nerd-font`.
+* [Zenbones](https://github.com/zenbones-theme/zenbones-mono/releases)
