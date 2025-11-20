@@ -148,6 +148,22 @@ function gg {
     git ls-files -m -o --exclude-standard | xargs rg --vimgrep "$pattern"
 }
 
+function grbr {
+    if command -v fzf >/dev/null; then
+        remote=$(git remote | fzf --height 40% --reverse)
+        if [ -z "$remote" ]; then
+            return 0
+        fi
+    else
+        remote="$1"
+        if [ -z "$remote" ]; then
+            echo "Usage: grbr <remote_name>"
+            return 1
+        fi
+    fi
+    git for-each-ref --sort=-committerdate "refs/remotes/$remote" --format='%(committerdate:relative)%09%(align:left,30)%(refname:short)%(end)%09%(subject)'
+}
+
 function dsh {
     if [ $# -eq 0 ]; then
         if command -v fzf >/dev/null; then
