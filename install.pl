@@ -15,7 +15,6 @@ my @INSTALL = (
     [".editorconfig", ""],
     [".gitconfig", ""],
     [".zshrc.d/", ""],
-    [".screenrc", ""],
 
     [".tmux.conf", ""],
     [{git => "https://github.com/tmux-plugins/tpm"}, ".tmux/plugins/tpm"],
@@ -29,8 +28,7 @@ my @INSTALL = (
 
     [".zshrc", ""],
     [".ssh/", ""],
-    ["kitty.conf", ".config/kitty/kitty.conf"], 
-    ["zellij.kdl", ".config/zellij/config.kdl"]
+    ["kitty.conf", ".config/kitty/kitty.conf"]
 );
 
 my @LOCALS = qw(
