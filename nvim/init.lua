@@ -48,8 +48,8 @@ require('packer').startup(function()
   }
 
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = { 'kyazdani42/nvim-web-devicons' },
+    'nvim-tree/nvim-tree.lua',
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require("nvim-tree").setup()
       vim.cmd [[
@@ -68,7 +68,7 @@ require('packer').startup(function()
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'},
+    requires = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       local powerline_dark = require('lualine.themes.powerline_dark')
       require('lualine').setup{
