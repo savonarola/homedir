@@ -22,5 +22,5 @@
 ## Fonts
 
 * [CMU Fonts](https://www.fontsquirrel.com/fonts/computer-modern)
-* [DejaVu Nerd Fonts](https://www.nerdfonts.com/font-downloads), also install via `brew install --cask font-dejavu-sans-mono-nerd-font`.
+* [DejaVu Nerd Fonts](https://www.nerdfonts.com/font-downloads), also install via `brew install --cask font-dejavu-sans-mono-nerd-font`. Also other nerd fonts can be found here.
 * [Zenbones](https://github.com/zenbones-theme/zenbones-mono/releases)

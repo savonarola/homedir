@@ -29,3 +29,9 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
+bindkey '\e[1;3D' backward-word
+bindkey '\e[1;3C' forward-word
+
+bindkey '\eb' backward-word
+bindkey '\ef' forward-word
+

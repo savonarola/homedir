@@ -33,6 +33,7 @@ my @LOCALS = qw(
     .gitconfig.local
     .vimrc.local
     .zshrc.local
+    .tmux.local.conf   
 );
 
 
