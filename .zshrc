@@ -130,6 +130,18 @@ command -v kubeon >/dev/null && alias kon=kubeon
 command -v kubectx >/dev/null && alias kc=kubectx
 command -v kubens >/dev/null && alias kn=kubens
 
+# tmux
+
+if [ -n "$TMUX" ]; then
+    update_tmux_window_name() {
+        local auto_rename=$(tmux show-window-option -v automatic-rename 2>/dev/null)
+        if [ "$auto_rename" = "on" ]; then
+            tmux rename-window "$(basename "$PWD")"
+        fi
+    }
+    chpwd_functions+=(update_tmux_window_name)
+fi
+
 # Helpers
 
 function vscode-kill {

@@ -16,16 +16,21 @@ my @INSTALL = (
     [".gitconfig", ""],
     [".zshrc.d/", ""],
     [".screenrc", ""],
+
     [".tmux.conf", ""],
+    [{git => "https://github.com/tmux-plugins/tpm"}, ".tmux/plugins/tpm"],
+
     [".tools/", ""],
     [".vim/", ""],
     [".vimrc", ""],
+
     ["nvim/", ".config/nvim/"],
+    [{git => "https://github.com/wbthomason/packer.nvim"}, ".local/share/nvim/site/pack/packer/start/packer.nvim"],
+
     [".zshrc", ""],
     [".ssh/", ""],
-    ["zellij.kdl", ".config/zellij/config.kdl"],
-
-    [{git => "https://github.com/wbthomason/packer.nvim"}, ".local/share/nvim/site/pack/packer/start/packer.nvim"]
+    ["kitty.conf", ".config/kitty/kitty.conf"], 
+    ["zellij.kdl", ".config/zellij/config.kdl"]
 );
 
 my @LOCALS = qw(
