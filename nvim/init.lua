@@ -1,147 +1,37 @@
+vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = ","
 
-vim.cmd [[packadd packer.nvim]]
+-- bootstrap lazy and all plugins
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
+if not vim.uv.fs_stat(lazypath) then
+  local repo = "https://github.com/folke/lazy.nvim.git"
+  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+end
 
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim', 'nvim-lua/popup.nvim'} },
-    config = function()
-      require("telescope").setup()
-      vim.cmd [[
-        nnoremap <leader>fp <cmd>Telescope find_files<cr>
-        nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-        nnoremap <leader>fb <cmd>Telescope buffers<cr>
-        nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-      ]]
-    end
-  }
+vim.opt.rtp:prepend(lazypath)
 
-  use 'junegunn/fzf'
-  use {
-    'junegunn/fzf.vim',
-    config = function()
-      vim.cmd [[
-        let $FZF_DEFAULT_COMMAND = 'rg --files --hidden -g "!.git"'
-        nnoremap <leader>p <cmd>FZF<cr>
-        nnoremap <leader>b <cmd>Buffers<cr>
-      ]]
-    end
-  }
+local lazy_config = require "configs.lazy"
 
-  use {
-    'ibhagwan/fzf-lua',
-    config = function()
-      vim.cmd [[
-        nnoremap <leader>g <cmd>FzfLua live_grep<cr>
-      ]]
+-- load plugins
+require("lazy").setup({
+  {
+    "NvChad/NvChad",
+    lazy = false,
+    branch = "v2.5",
+    import = "nvchad.plugins",
+  },
 
-      local actions = require("fzf-lua.actions")
-      require('fzf-lua').setup({
-        grep = {
-          rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=512 --hidden -g \"!.git\" "
-        }
-      })
-    end
-  }
+  { import = "plugins" },
+}, lazy_config)
 
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require("nvim-tree").setup()
-      vim.cmd [[
-        nnoremap <leader>t <cmd>NvimTreeToggle<cr>
-      ]]
-    end
-  }
+-- load theme
+dofile(vim.g.base46_cache .. "defaults")
+dofile(vim.g.base46_cache .. "statusline")
 
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require("gitsigns").setup()
-    end
-  }
+require "options"
+require "autocmds"
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local powerline_dark = require('lualine.themes.powerline_dark')
-      require('lualine').setup{
-        options = { theme  = powerline_dark }
-      }
-    end
-  }
-
-  use {
-    'b3nj5m1n/kommentary',
-    config = function()
-      vim.api.nvim_set_keymap("n", "<leader>cc", "<Plug>kommentary_line_increase", {})
-      vim.api.nvim_set_keymap("n", "<leader>cu", "<Plug>kommentary_line_decrease", {})
-      vim.api.nvim_set_keymap("x", "<leader>cc", "<Plug>kommentary_visual_increase", {})
-      vim.api.nvim_set_keymap("x", "<leader>cu", "<Plug>kommentary_visual_decrease", {})
-    end
-  }
-
-  use {
-    'sbdchd/neoformat',
-    config = function()
-      vim.g.neoformat_erlang_erlfmt = { exe = "erlfmt" }
-      vim.g.neoformat_enabled_erlang = { "erlfmt" }
-    end
-  }
-
-  use {
-    "Pocco81/auto-save.nvim",
-    config = function()
-      require("auto-save").setup()
-    end
-  }
-
-  use 'elixir-lang/vim-elixir'
-  use 'chr4/nginx.vim'
-
-  use {
-    'Mofiqul/vscode.nvim',
-    config = function()
-      vim.g.vscode_style = "dark"
-      vim.cmd [[colorscheme vscode]]
-    end
-  }
-
+vim.schedule(function()
+  require "mappings"
 end)
-
-vim.cmd [[
-  set undodir=~/.vim-undo
-  set undofile
-
-	set novisualbell
-	set t_vb=
-	set nobackup
-	set noswapfile
-
-	set number
-
-  if has("unnamedplus")
-    set clipboard=unnamedplus
-  endif
-
-  nmap <c-c> "+y
-  vmap <c-c> "+y
-  inoremap <c-v> <c-r>+
-  cnoremap <c-v> <c-r>+
-  inoremap <c-r> <c-v>
-
-  map Q <Nop>
-
-  vmap > >gv
-  vmap < <gv
-
-  set grepprg=rg\ --vimgrep\ --no-heading\ --hidden\ --smart-case
-  set grepformat=%f:%l:%c:%m
-]]
-
