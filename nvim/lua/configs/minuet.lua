@@ -1,10 +1,11 @@
 local minuet = require("minuet")
 
 minuet.setup({
-  provider = "claude",
+  -- provider = "claude",
+  provider = "codestral",
 
   cmp = {
-    enable_auto_complete = false,
+    enable_auto_complete = true,
   },
 
   provider_options = {
@@ -13,6 +14,17 @@ minuet.setup({
       api_key = "ANTHROPIC_API_KEY",
       max_tokens = 1024,
     },
+    codestral = {
+      model = "codestral-latest",
+      api_key = "CODESTRAL_API_KEY",
+      end_point = "https://api.mistral.ai/v1/fim/completions",
+      max_tokens = 1024,
+      optional = {
+        max_tokens = 1024,
+        stop = { "\n\n" },
+        top_p = 1,
+      },
+    }
   },
 
   n_completions = 4,
