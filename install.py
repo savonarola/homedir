@@ -146,8 +146,18 @@ def install_ln(rel_src, rel_target):
     src = expand_src(rel_src)
     target = prepare_target(rel_target)
 
-    logger.info(f"[ln] {rel_src} -> {target.rstrip('/')}")
-    run_command('ln', '-sf', src, target.rstrip('/'))
+    target_check = target.rstrip('/')
+    if os.path.exists(target_check):
+        logger.debug(f"Removing existing {target_check}")
+        if os.path.islink(target_check):
+            os.unlink(target_check)
+        elif os.path.isdir(target_check):
+            run_command('rm', '-rf', target_check)
+        else:
+            os.remove(target_check)
+
+    logger.info(f"[ln] {rel_src} -> {target_check}")
+    run_command('ln', '-sf', src, target_check)
 
 
 def install_rsync(rel_src, rel_target):
