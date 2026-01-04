@@ -5,7 +5,7 @@ minuet.setup({
   provider = "codestral",
 
   cmp = {
-    enable_auto_complete = true,
+    enable_auto_complete = false,
   },
 
   provider_options = {
