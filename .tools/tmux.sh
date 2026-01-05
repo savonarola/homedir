@@ -10,11 +10,11 @@ count=$(echo "$sessions" | wc -l)
 
 if [ -z "$sessions" ]; then
     # No sessions exist, start a new one
-    exec tmux -CC
+    exec tmux
 elif [ "$count" -eq 1 ]; then
     # Only one session exists, attach to it
     session_name="$sessions"
-    exec tmux -CC attach-session -t "$session_name"
+    exec tmux attach-session -t "$session_name"
 else
     # Multiple sessions, let user select with fzf
     if command -v fzf >/dev/null; then
@@ -22,10 +22,10 @@ else
 
         if [ -n "$full_session" ]; then
             session=$(echo "$full_session" | cut -d ':' -f1)
-            exec tmux -CC attach-session -t "$session"
+            exec tmux attach-session -t "$session"
         fi
     else
-        echo "Multiple sessions exist. Use 'tmux -CC attach-session -t <session>'"
+        echo "Multiple sessions exist. Use 'tmux attach-session -t <session>'"
         echo "Available sessions:"
         echo "$full_sessions"
         return 1
