@@ -23,15 +23,17 @@ return {
   -- { import = "nvchad.blink.lazyspec" },
 
   {
-    "nvim-treesitter/nvim-treesitter",
+    "savonarola/nvim-treesitter",
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",
         "html", "css",
         "elixir", "python", "rust", "go",
         "c", "cpp", "erlang", "bash",
+        "markdown", "query"
       },
     },
+
   },
 
   -- Minuet AI completion
@@ -150,4 +152,10 @@ return {
     opts = {}, -- for default options. Refer to the configuration section for custom setup.
     cmd = "BlameColumnToggle",
   },
+
+  -- {
+  --   "Mofiqul/vscode.nvim",
+  --   opts = {},
+  -- }
+
 }

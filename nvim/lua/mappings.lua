@@ -32,4 +32,7 @@ map("v", "<leader>fm", function()
   require("conform").format({ async = true, lsp_fallback = false })
 end, { desc = "Format selection" })
 
+-- Diagnostics mappings
+map("n", "K", vim.diagnostic.open_float, { desc = "Show diagnostics" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

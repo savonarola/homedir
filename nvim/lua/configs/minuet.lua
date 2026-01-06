@@ -1,8 +1,7 @@
 local minuet = require("minuet")
 
 minuet.setup({
-  -- provider = "claude",
-  provider = "codestral",
+  provider = "claude",
 
   cmp = {
     enable_auto_complete = false,
