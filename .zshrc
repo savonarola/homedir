@@ -160,6 +160,21 @@ function gg {
     git ls-files -m -o --exclude-standard | xargs rg --vimgrep "$pattern"
 }
 
+function gco {
+  local branches branch
+  branches=$(git branch --all | \
+             grep -v HEAD | \
+             sed 's/^\*//' | \
+             sed 's/^..//' | \
+             sed 's#remotes/origin/##')
+
+  branch=$(echo "$branches" | fzf --height 40% --reverse)
+
+  if [[ -n "$branch" ]]; then
+    git checkout "$branch"
+  fi
+}
+
 function grbr {
     if command -v fzf >/dev/null; then
         remote=$(git remote | fzf --height 40% --reverse)
