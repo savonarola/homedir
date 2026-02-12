@@ -36,37 +36,12 @@ return {
 
   },
 
-  -- Minuet AI completion
-  {
-    "milanglacier/minuet-ai.nvim",
-    event = "InsertEnter",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("configs.minuet")
-    end,
-  },
-
-  -- Override nvim-cmp to add minuet source
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
 
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, 1, {
-        name = "minuet",
-        group_index = 1,
-        priority = 100,
-      })
-
-      opts.performance = opts.performance or {}
-      opts.performance.fetching_timeout = 3000
-
       opts.mapping = opts.mapping or {}
-      opts.mapping["<A-Tab>"] = require("minuet").make_cmp_map()
 
       -- Arrow keys to navigate completion menu
       opts.mapping["<Down>"] = cmp.mapping(function(fallback)
