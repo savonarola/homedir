@@ -9,7 +9,7 @@ Run
 ```bash
 $ git clone https://github.com/savonarola/homedir.git
 $ cd homedir
-$ ./install.pl
+$ python3 install.py
 ```
 
 Conflicting files will be backed up to `$HOME/.homedir_backup`.
