@@ -120,7 +120,17 @@ alias h='history'
 command -v rg >/dev/null && alias rgi="rg --no-ignore"
 command -v lazygit >/dev/null && alias lg=lazygit
 command -v bat >/dev/null && alias bat="$HOME/.cargo/bin/bat --style plain --paging never --theme 'Visual Studio Dark+'"
-command -v exa >/dev/null && alias ll="exa --long --git --all"
+if command -v exa >/dev/null; then
+    alias ls="exa"
+    alias ll="exa --long --git --all"
+    alias la="exa -a"
+    alias l="exa --oneline"
+else
+    alias ls='ls --color=auto'
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+fi
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 command -v prettyping >/dev/null && alias ping='prettyping --nolegend'
 
