@@ -1,0 +1,63 @@
+- user: av
+  gather_facts: no
+  hosts: all
+  become: yes
+  tasks:
+  - apt:
+      name: [
+        'zsh',
+        'git',
+        'gh',
+        'htop',
+        'less',
+        'vim',
+        'tmux',
+        'net-tools',
+        'sox',
+        'software-properties-common',
+        'python3-software-properties',
+        'rsync',
+        'python3-apt',
+        'kitty-terminfo'
+        ]
+      update_cache: true
+  - shell: chsh -s /bin/zsh av
+  - name: download latest neovim release tarball
+    get_url:
+      url: https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+      dest: /tmp/nvim-linux-x86_64.tar.gz
+      mode: '0644'
+    tags:
+      - neovim
+  - name: remove previous /opt neovim unpack dir
+    file:
+      path: /opt/nvim-linux-x86_64
+      state: absent
+    tags:
+      - neovim
+  - name: install neovim to /opt
+    unarchive:
+      src: /tmp/nvim-linux-x86_64.tar.gz
+      dest: /opt
+      remote_src: true
+    tags:
+      - neovim
+  - name: link neovim binary into /usr/local/bin
+    file:
+      src: /opt/nvim-linux-x86_64/bin/nvim
+      dest: /usr/local/bin/nvim
+      state: link
+      force: true
+    tags:
+      - neovim
+
+- user: av
+  gather_facts: no
+  hosts: all
+  become: no
+  tasks:
+  - git: repo=https://github.com/savonarola/homedir.git dest=homedir
+  - shell: ./install.py chdir=homedir
+  - name: install uv
+    shell: |
+      curl -LsSf https://astral.sh/uv/install.sh | sh
