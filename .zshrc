@@ -119,7 +119,11 @@ alias h='history'
 
 command -v rg >/dev/null && alias rgi="rg --no-ignore"
 command -v lazygit >/dev/null && alias lg=lazygit
-command -v bat >/dev/null && alias bat="$HOME/.cargo/bin/bat --style plain --paging never --theme 'Visual Studio Dark+'"
+if command -v bat >/dev/null; then
+    alias bat="$HOME/.cargo/bin/bat --style plain --paging never --theme 'Visual Studio Dark+'"
+else
+    alias bat=cat
+fi
 if command -v exa >/dev/null; then
     alias ls="exa"
     alias ll="exa --long --git --all"
