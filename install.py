@@ -39,6 +39,7 @@ INSTALL = {
         (".zshrc", ""),
         (".zshrc.d/", ""),
         ("kitty.conf", ".config/kitty/kitty.conf"),
+        ("AGENTS.md", ".config/opencode/AGENTS.md"),
         ("nvim/", ".config/nvim/"),
     ],
     "git": [
