@@ -7,6 +7,7 @@
 - When adding new env variables to `.env` — update `.env.example`.
 - For any question, give an answer but do not make changes. Ask for consent to make changes explicitly.
 - When asked to do something, first describe the solution and ask for consent, then do it.
+- For any substantial work create TODO/Task list and follow it step by step.
 - Try to avoid workarounds — do everything consistently.
 - After changing runtime behaviour, run relevant rests.
 - Suggest covering new code with tests.
