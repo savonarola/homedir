@@ -11,4 +11,4 @@
 - Try to avoid workarounds — do everything consistently.
 - After changing runtime behaviour, run relevant rests.
 - Suggest covering new code with tests.
-- IMPORTANT: before implementing plan, save original prompt, the FULL plan and the todo list (if present) into .tasks/YYYY-MM-DD-feauture-short-name.md
+- IMPORTANT: before implementing plan, save original prompt, the FULL plan into .tasks/YYYY-MM-DD-feauture-short-name.md. Mention git branch that will be used for implementation in the plan.
