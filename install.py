@@ -134,7 +134,7 @@ def prepare_target(rel_target):
     prepare_path(target)
 
     target_check = target.rstrip('/')
-    if os.path.exists(target_check):
+    if os.path.exists(target_check) and rel_target.rstrip('/') != '.ssh':
         backup(target, rel_target)
 
     return target
