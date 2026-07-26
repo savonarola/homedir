@@ -57,14 +57,14 @@
       "/Users/av/.local/share/opencode/repos": "allow",
       "/Users/av/.local/share/opencode/**": "allow"
     }
-  },
-  "plugin": ["opencode-goal-plugin"],
-  "command": {
-    "goal": {
-      "description": "Set a session-scoped goal and auto-continue until complete.",
-      "template": "$ARGUMENTS",
-      "agent": "build"
-    }
   }
+  // "plugin": ["opencode-goal-plugin"],
+  // "command": {
+  //   "goal": {
+  //     "description": "Set a session-scoped goal and auto-continue until complete.",
+  //     "template": "$ARGUMENTS",
+  //     "agent": "build"
+  //   }
+  // }
 }
 
