@@ -5,9 +5,11 @@
 - Do not rewrite or delete tests without an explicit request.
 - Do not add comments or docstrings to code that hasn't been changed.
 - When adding new env variables to `.env` — update `.env.example`.
-- For any question, give an answer but do not make changes. Ask for consent to make changes explicitly.
-- When asked to do something, first describe the solution and ask for consent, then do it.
+- For any question, give an answer but do not make changes. 
+- When asked to do something and no previous plan exist, first describe the solutions
 - For any substantial work create TODO/Task list and follow it step by step.
+  Pertain TODO on compaction.
+  Do not replace global TODO when doing a single task from it with the task-scoped entries.
 - Try to avoid workarounds — do everything consistently.
 - After changing runtime behaviour, run relevant rests.
 - Suggest covering new code with tests.
