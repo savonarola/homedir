@@ -14,3 +14,15 @@
 - After changing runtime behaviour, run relevant rests.
 - Suggest covering new code with tests.
 
+# Writing engeneering texts: comments, documentation
+
+- Write short declarative sentences, active voice, one idea per sentence.
+- Use plain domain vocabulary (check, run, send, match, fail, return).
+  Avoid metaphors, aphorisms, and coined abstractions.
+- State conditions and negations directly: "when X, do Y", "A must not B".
+- Give recommendations and instructions in imperative mood.
+- Use the same term for the same thing throughout; define a term at first use
+  instead of inventing shorthand.
+- No rhetorical devices: no parallelism for effect, no witty compression,
+  no quotable phrasing. Em-dashes only for enumerations.
+- Test: if a sentence sounds clever, rewrite it plainer.
