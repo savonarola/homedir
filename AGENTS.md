@@ -12,7 +12,7 @@ IMPORTANT: In the generated data (code, docs, texts, commit messages, pr descs, 
 - For any question, give an answer but do not make changes. 
 - When asked to do something and no previous plan exist, first describe the solutions
 - For any substantial work create TODO/Task list and follow it step by step.
-  Pertain TODO on compaction.
+  Pertain TODO on compaction. Use built in tool if present, otherwise use TODO skill.
   Do not replace global TODO when doing a single task from it with the task-scoped entries.
 - Try to avoid workarounds — do everything consistently.
 - After changing runtime behaviour, run relevant rests.

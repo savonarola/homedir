@@ -50,6 +50,8 @@
       "/home/av/dev/**": "allow",
       "/home/av/.local/share/opencode/repos": "allow",
       "/home/av/.local/share/opencode/**": "allow",
+      "/home/av/.asdf/": "allow",
+      "/home/av/.asdf/**": "allow",
       "/Users/av/emq": "allow",
       "/Users/av/emq/**": "allow",
       "/Users/av/dev": "allow",

@@ -40,6 +40,8 @@ INSTALL = {
         (".zshrc.d/", ""),
         ("kitty.conf", ".config/kitty/kitty.conf"),
         ("AGENTS.md", ".config/opencode/AGENTS.md"),
+        ("AGENTS.md", ".codex/AGENTS.md"),
+        ("agents/skills/todo/", ".agents/skills/todo/"),
         ("opencode.jsonc", ".config/opencode/opencode.jsonc"),
         ("nvim/", ".config/nvim/"),
     ],
