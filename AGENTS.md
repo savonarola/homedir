@@ -1,3 +1,7 @@
+# General instructions
+
+IMPORTANT: In the generated data (code, docs, texts, commit messages, pr descs, etc.) NEVER keep any trace about the LLM model, provider or harness (Claude, Anthropic, Codex, OpenAI, OpenCode, etc.) used.
+
 # Code Working Rules
 
 - Before modifying a file — read it.
