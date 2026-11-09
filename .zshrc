@@ -14,6 +14,9 @@ source $HOME/.zshrc.d/key-bindings.zsh
 source $HOME/.zshrc.d/completion.zsh
 
 source $HOME/.zshrc.d/prompt.zsh
+
+export PROMPT='%B%T%b %{$fg_bold[green]%}$(prompt_host)%{$reset_color%}:$(prompt_path)$(git_remote_status) ${ret_status}%{$reset_color%}'
+
 # System configuration
 
 ulimit -n 20480
@@ -288,4 +291,3 @@ if [[ -f $LOCAL ]];
 then
     source $LOCAL
 fi
-
