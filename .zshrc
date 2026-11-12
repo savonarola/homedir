@@ -141,6 +141,8 @@ fi
 command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
 command -v prettyping >/dev/null && alias ping='prettyping --nolegend'
 
+source "$HOME/.zshrc.d/kube.zsh"
+
 command -v kubectl >/dev/null && alias k=kubectl
 command -v kubeoff >/dev/null && alias koff=kubeoff
 command -v kubeon >/dev/null && alias kon=kubeon
@@ -291,3 +293,5 @@ if [[ -f $LOCAL ]];
 then
     source $LOCAL
 fi
+
+PROMPT='$(kube_ps1)'"$PROMPT"
